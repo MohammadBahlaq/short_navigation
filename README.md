@@ -1,4 +1,4 @@
-Simple package helps you to do navigation in short line context (BuildCotext)
+Simple package helps you to do navigation in short line without using context (BuildCotext)
 ## Features
 
 You can navigation without context.
@@ -98,7 +98,7 @@ and after that you can use this package usefully.
 ## Additional information
 
 I hope this package helped you very well.
-If you need to contact with me you could email me at [Bahlaq57@gmmail.com]
+If you need to contact with me you could email me at [Bahlaq57@gmail.com]
 or text me in [LinkedIn] at [www.linkedin.com/in/mohammad-bahlaq-089882220]
 My GitHub [https://github.com/MohammadBahlaq]
 

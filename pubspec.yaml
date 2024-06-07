@@ -1,6 +1,6 @@
 name: short_navigation
 description: "This package built to navigate between screens (routes) without using context (BuildContext)."
-version: 0.0.1
+version: 0.0.3
 homepage: https://github.com/MohammadBahlaq/short_navigation.git
 
 environment:
