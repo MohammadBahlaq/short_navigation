@@ -1,39 +1,107 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
-
+Simple package helps you to do navigation in short line context (BuildCotext)
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+You can navigation without context.
+Show dialog without context.
+Show bottomSheet without context.
+Show SnackBar without context and aything else without using any context.
+And this package will give you context variable 
+to use it whenever and wherever in your code.
 
 ## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+In MaterialApp in main.dart you must pass [Go.navigatorKey] to [navigatorKey] property
+like this:
 
 ```dart
-const like = 'sample';
+MaterialApp(
+      navigatorKey: Go.navigatorKey, //Pass this navigatorKey here
+      home:  home: const HomePage(),
+    );
 ```
 
+and after that you can use this package usefully.    
+
+## Usage
+```dart
+  ///If you need context in any file in your code you can use it
+  Go.context;
+
+  ///This is simple navigation all you have to do
+  ///just pass your [widget] to go
+  Go.to(HomePage());
+
+  ///This is simple navigation all you have to do
+  ///just pass your [widget] to go and it will
+  ///remove previous route from the tree
+  Go.toReplace(HomePage());
+
+  ///This is simple navigation all you have to do
+  ///just pass your [widget] to go and it will
+  ///remove all routes from the tree
+  Go.toRemoveAll(HomePage());
+
+  ///If you want to pop sothing before
+  ///pushing to another widget you could use it,
+  ///just pass your [widget] to go
+  Go.backAndto(HomePage());
+
+  ///This is simple navigation all you have to do
+  ///just passing your route [name] to go
+  Go.toName("/homePage");
+
+  ///This is simple navigation all you have to do
+  ///just pass your route [name] to go and it will
+  ///remove previous route from the tree
+  Go.toReplaceName("/homePage");
+
+  ///This is simple navigation all you have to do
+  ///just pass your route [name] to go and it will
+  ///remove all routes from the tree
+  Go.toNameRemoveAll("/homePage");
+
+  ///If you want to pop sothing before
+  ///pushing to another widget you could use it,
+  ///just pass your route [name] to go
+  Go.backAndtoName("/homePage");
+
+  ///If you need to back to previous page you can use this function,
+  ///however if you need to pop many routes you simply
+  ///you have to pass how many time you want to pop
+  ///using [numOfBacks].
+  ///There is no need to pass [numOfBacks] if you just want to pop one time.
+  Go.back();
+
+  ///If you wnat to [showDialog] without using context
+  ///you have to use this function and the package will pass the context automaticlly.
+  ///You can use all [showDialog] proparties as usuall.
+  Go.dialog(MyCustomDialog());
+
+  ///If you wnat to [showModalBottomSheet] without using context
+  ///you have to use this function and the package will pass the context automaticlly.
+  ///You can use all [showModalBottomSheet] proparties as usuall.
+  Go.bottomSheet(MyCustomBottomSheet());
+
+  ///If you wnat to [showSnackBar] without using context
+  ///you have to use this function and the package will pass the context automaticlly.
+  ///You can use all [showSnackBar] proparties as usuall.
+  Go.snackBar(MyCustomSnackBar());
+
+  ///If you wnat to [showMaterialBanner] without using context
+  ///you have to use this function and the package will pass the context automaticlly.
+  ///You can use all [showMaterialBanner] proparties as usuall.
+  Go.materialBanner(MyCustomMaterialBanner());
+
+  ///If you need any thing from [ScaffoldMessenger.of(context)]
+  ///you can use it wherevere in your code without need any context.
+  Go.scaffoldMassenger;
+```
 ## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+I hope this package helped you very well.
+If you need to contact with me you could email me at [Bahlaq57@gmmail.com]
+or text me in [LinkedIn] at [www.linkedin.com/in/mohammad-bahlaq-089882220]
+My GitHub [https://github.com/MohammadBahlaq]
+
+Do not hesitate to contact me if you faced any problem.
+
+Mohammad Bahlaq.
