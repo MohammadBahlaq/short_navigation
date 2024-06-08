@@ -1,10 +1,10 @@
 name: short_navigation
 description: "This package built to navigate between screens (routes) without using context (BuildContext)."
-version: 0.0.3
+version: 0.0.4
 homepage: https://github.com/MohammadBahlaq/short_navigation.git
 
 environment:
-  sdk: '>=3.4.3 <4.0.0'
+  sdk: '>=2.12.0 <4.0.0'
   flutter: ">=1.17.0"
 
 dependencies:
