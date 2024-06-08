@@ -11,22 +11,71 @@ class Go {
 
   ///This is simple navigation all you have to do
   ///just pass your [widget] to go
-  static Future<void> to(Widget page) async {
-    navigatorKey.currentState?.push(MaterialPageRoute(builder: (context) => page));
+  static Future<void> to(
+    Widget page, {
+    bool allowSnapshotting = true,
+    bool barrierDismissible = false,
+    bool fullscreenDialog = false,
+    bool maintainState = true,
+    RouteSettings? settings,
+  }) async {
+    navigatorKey.currentState?.push(
+      MaterialPageRoute(
+        builder: (context) => page,
+        allowSnapshotting: allowSnapshotting,
+        barrierDismissible: barrierDismissible,
+        fullscreenDialog: fullscreenDialog,
+        maintainState: maintainState,
+        settings: settings,
+      ),
+    );
   }
 
   ///This is simple navigation all you have to do
   ///just pass your [widget] to go and it will
   ///remove previous route from the tree
-  static Future<void> toReplace(Widget page) async {
-    navigatorKey.currentState?.pushReplacement(MaterialPageRoute(builder: (context) => page));
+  static Future<void> toReplace(
+    Widget page, {
+    bool allowSnapshotting = true,
+    bool barrierDismissible = false,
+    bool fullscreenDialog = false,
+    bool maintainState = true,
+    RouteSettings? settings,
+  }) async {
+    navigatorKey.currentState?.pushReplacement(
+      MaterialPageRoute(
+        builder: (context) => page,
+        allowSnapshotting: allowSnapshotting,
+        barrierDismissible: barrierDismissible,
+        fullscreenDialog: fullscreenDialog,
+        maintainState: maintainState,
+        settings: settings,
+      ),
+    );
   }
 
   ///This is simple navigation all you have to do
   ///just pass your [widget] to go and it will
   ///remove all routes from the tree
-  static Future<void> toRemoveAll(Widget page) async {
-    navigatorKey.currentState?.pushAndRemoveUntil(MaterialPageRoute(builder: (context) => page), (route) => false);
+  static Future<void> toRemoveAll(
+    Widget page, {
+    bool allowSnapshotting = true,
+    bool barrierDismissible = false,
+    bool fullscreenDialog = false,
+    bool maintainState = true,
+    RouteSettings? settings,
+  }) async {
+    navigatorKey.currentState?.pushAndRemoveUntil(
+      MaterialPageRoute(
+        builder: (context) => page,
+        allowSnapshotting: allowSnapshotting,
+        barrierDismissible: barrierDismissible,
+        fullscreenDialog: fullscreenDialog,
+        maintainState: maintainState,
+        settings: settings,
+      ),
+      (route) => false,
+    );
   }
 
   ///If you want to pop sothing before
@@ -39,29 +88,42 @@ class Go {
 
   ///This is simple navigation all you have to do
   ///just passing your route [name] to go
-  static Future<void> toName(String page) async {
-    navigatorKey.currentState?.pushNamed(page);
+  static Future<void> toName(String page, {Object? arguments}) async {
+    navigatorKey.currentState?.pushNamed(
+      page,
+      arguments: arguments,
+    );
   }
 
   ///This is simple navigation all you have to do
   ///just pass your route [name] to go and it will
   ///remove previous route from the tree
-  static Future<void> toReplaceName(String page) async {
-    navigatorKey.currentState?.pushReplacementNamed(page);
+  static Future<void> toReplaceName(String page, {Object? arguments}) async {
+    navigatorKey.currentState?.pushReplacementNamed(
+      page,
+      arguments: arguments,
+    );
   }
 
   ///This is simple navigation all you have to do
   ///just pass your route [name] to go and it will
   ///remove all routes from the tree
-  static Future<void> toNameRemoveAll(String page) async {
-    navigatorKey.currentState?.pushNamedAndRemoveUntil(page, (route) => false);
+  static Future<void> toNameRemoveAll(String page, {Object? arguments}) async {
+    navigatorKey.currentState?.pushNamedAndRemoveUntil(
+      page,
+      (route) => false,
+      arguments: arguments,
+    );
   }
 
   ///If you want to pop sothing before
   ///pushing to another widget you could use it,
   ///just pass your route [name] to go
-  static Future<void> backAndtoName(String page) async {
-    navigatorKey.currentState?.popAndPushNamed(page);
+  static Future<void> backAndtoName(String page, {Object? arguments}) async {
+    navigatorKey.currentState?.popAndPushNamed(
+      page,
+      arguments: arguments,
+    );
   }
 
   ///If you need to back to previous page you can use this function,
