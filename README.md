@@ -113,7 +113,7 @@ Explaining of how to use this package
 I hope this package helped you very well.
 If you need to contact with me: 
 
-<img src="https://github.com/MohammadBahlaq/short_navigation/blob/main/assets/Gmail.png" width="20"> [Bahlaq57@gmail.com]
+<img src="https://github.com/MohammadBahlaq/short_navigation/blob/main/assets/Gmail.jpg" width="20"> [Bahlaq57@gmail.com]
 
 <img src="https://github.com/MohammadBahlaq/short_navigation/blob/main/assets/LinkedIn.png" width="20"> [www.linkedin.com/in/mohammad-bahlaq-089882220]
 
