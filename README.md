@@ -113,11 +113,11 @@ Explaining of how to use this package
 I hope this package helped you very well.
 If you need to contact with me: 
 
-<img src="https://github.com/MohammadBahlaq/short_navigation/blob/main/assets/Gmail.png" width="50"> [Bahlaq57@gmail.com]
+<img src="https://github.com/MohammadBahlaq/short_navigation/blob/main/assets/Gmail.png" width="20"> [Bahlaq57@gmail.com]
 
-<img src="https://github.com/MohammadBahlaq/short_navigation/blob/main/assets/LinkedIn.png" width="50"> [www.linkedin.com/in/mohammad-bahlaq-089882220]
+<img src="https://github.com/MohammadBahlaq/short_navigation/blob/main/assets/LinkedIn.png" width="20"> [www.linkedin.com/in/mohammad-bahlaq-089882220]
 
-<img src="https://github.com/MohammadBahlaq/short_navigation/blob/main/assets/GitHub.png" width="50"> [https://github.com/MohammadBahlaq]
+<img src="https://github.com/MohammadBahlaq/short_navigation/blob/main/assets/GitHub.png" width="20"> [https://github.com/MohammadBahlaq]
 
 Do not hesitate to contact me if you faced any problem.
 
