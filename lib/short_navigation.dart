@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Go {
-  static final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
+  static final GlobalKey<NavigatorState> _navigatorKey =
+      GlobalKey<NavigatorState>();
 
   ///This is navigatorKey you have to pass it in the MaterialApp in the main.dart
   static GlobalKey<NavigatorState> get navigatorKey => _navigatorKey;
@@ -234,11 +235,13 @@ class Go {
   ///If you wnat to [showMaterialBanner] without using context
   ///you have to use this function and the package will pass the context automaticlly.
   ///You can use all [showMaterialBanner] proparties as usuall.
-  static ScaffoldFeatureController<MaterialBanner, MaterialBannerClosedReason> materialBanner(MaterialBanner materialBanner) {
+  static ScaffoldFeatureController<MaterialBanner, MaterialBannerClosedReason>
+      materialBanner(MaterialBanner materialBanner) {
     return ScaffoldMessenger.of(context).showMaterialBanner(materialBanner);
   }
 
   ///If you need any thing from [ScaffoldMessenger.of(context)]
   ///you can use it wherevere in your code without need any context.
-  static ScaffoldMessengerState get scaffoldMassenger => ScaffoldMessenger.of(context);
+  static ScaffoldMessengerState get scaffoldMessenger =>
+      ScaffoldMessenger.of(context);
 }

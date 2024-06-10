@@ -102,11 +102,11 @@ Explaining of how to use this package
   ///You can use all [showMaterialBanner] proparties as usuall.
   Go.materialBanner(MyCustomMaterialBanner());
 ```
-## Gloable access to scaffoldMassenger
+## Gloable access to scaffoldMessenger
 ```dart
   ///If you need any thing from [ScaffoldMessenger.of(context)]
   ///you can use it wherevere in your code without need any context.
-  Go.scaffoldMassenger;
+  Go.scaffoldMessenger;
 ```
 ## Additional information
 
