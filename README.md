@@ -22,10 +22,15 @@ MaterialApp(
 and after that you can use this package usefully.    
 
 ## Usage
+Explaining of how to use this package
+
+## Gloable access to context
 ```dart
   ///If you need context in any file in your code you can use it
   Go.context;
-
+```
+## Navigation using route widget
+```dart
   ///This is simple navigation all you have to do
   ///just pass your [widget] to go
   Go.to(HomePage());
@@ -44,7 +49,9 @@ and after that you can use this package usefully.
   ///pushing to another widget you could use it,
   ///just pass your [widget] to go
   Go.backAndto(HomePage());
-
+```
+## Navigation using route name
+```dart
   ///This is simple navigation all you have to do
   ///just passing your route [name] to go
   Go.toName("/homePage");
@@ -63,14 +70,18 @@ and after that you can use this package usefully.
   ///pushing to another widget you could use it,
   ///just pass your route [name] to go
   Go.backAndtoName("/homePage");
-
+```
+## Back to previous page
+```dart
   ///If you need to back to previous page you can use this function,
   ///however if you need to pop many routes you simply
   ///you have to pass how many time you want to pop
   ///using [numOfBacks].
   ///There is no need to pass [numOfBacks] if you just want to pop one time.
   Go.back();
-
+```
+## Show dialog, bottomSheet, snackBar, and materialBanner
+```dart
   ///If you wnat to [showDialog] without using context
   ///you have to use this function and the package will pass the context automaticlly.
   ///You can use all [showDialog] proparties as usuall.
@@ -90,7 +101,9 @@ and after that you can use this package usefully.
   ///you have to use this function and the package will pass the context automaticlly.
   ///You can use all [showMaterialBanner] proparties as usuall.
   Go.materialBanner(MyCustomMaterialBanner());
-
+```
+## Gloable access to scaffoldMassenger
+```dart
   ///If you need any thing from [ScaffoldMessenger.of(context)]
   ///you can use it wherevere in your code without need any context.
   Go.scaffoldMassenger;
@@ -98,9 +111,11 @@ and after that you can use this package usefully.
 ## Additional information
 
 I hope this package helped you very well.
-If you need to contact with me you could email me at [Bahlaq57@gmail.com]
-or text me in [LinkedIn] at [www.linkedin.com/in/mohammad-bahlaq-089882220]
-My GitHub [https://github.com/MohammadBahlaq]
+If you need to contact with me: 
+
+<img src="https://github.com/MohammadBahlaq/short_navigation/assets/Gmail.png"> [Bahlaq57@gmail.com]
+<img src="https://github.com/MohammadBahlaq/short_navigation/assets/LinkedIn.png"> [www.linkedin.com/in/mohammad-bahlaq-089882220]
+<img src="https://github.com/MohammadBahlaq/short_navigation/assets/GitHub.png"> [https://github.com/MohammadBahlaq]
 
 Do not hesitate to contact me if you faced any problem.
 

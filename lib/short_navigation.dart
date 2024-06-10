@@ -144,8 +144,8 @@ class Go {
   ///If you wnat to [showDialog] without using context
   ///you have to use this function and the package will pass the context automaticlly.
   ///You can use all [showDialog] proparties as usuall.
-  static Future<void> dialog({
-    required Widget content,
+  static Future<void> dialog(
+    Widget content, {
     bool barrierDismissible = true,
     Color? barrierColor,
     String? barrierLabel,
@@ -172,8 +172,8 @@ class Go {
   ///If you wnat to [showModalBottomSheet] without using context
   ///you have to use this function and the package will pass the context automaticlly.
   ///You can use all [showModalBottomSheet] proparties as usuall.
-  static Future<void> bottomSheet({
-    required Widget content,
+  static Future<void> bottomSheet(
+    Widget content, {
     Color? backgroundColor,
     String? barrierLabel,
     double? elevation,
