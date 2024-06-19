@@ -82,7 +82,7 @@ class Go {
   ///If you want to pop sothing before
   ///pushing to another widget you could use it,
   ///just pass your [widget] to go
-  static Future<void> backAndto(Widget page) async {
+  static Future<void> backAndTo(Widget page) async {
     back();
     to(page);
   }
@@ -120,7 +120,7 @@ class Go {
   ///If you want to pop sothing before
   ///pushing to another widget you could use it,
   ///just pass your route [name] to go
-  static Future<void> backAndtoName(String page, {Object? arguments}) async {
+  static Future<void> backAndToName(String page, {Object? arguments}) async {
     navigatorKey.currentState?.popAndPushNamed(
       page,
       arguments: arguments,
@@ -129,7 +129,7 @@ class Go {
 
   ///If you need to back to previous page you can use this function,
   ///however if you need to pop many routes you simply
-  ///you have to pass how many time you want to pop
+  ///have to pass how many time you want to pop
   ///using [numOfBacks].
   ///There is no need to pass [numOfBacks] if you just want to pop one time.
   static void back([int? numOfBacks]) async {
@@ -244,4 +244,8 @@ class Go {
   ///you can use it wherevere in your code without need any context.
   static ScaffoldMessengerState get scaffoldMessenger =>
       ScaffoldMessenger.of(context);
+
+  ///If you need any thing from [Theme.of(context)]
+  ///you can use it wherevere in your code without need any context.
+  static ThemeData get theme => Theme.of(context);
 }

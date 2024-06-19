@@ -24,7 +24,7 @@ and after that you can use this package usefully.
 ## Usage
 Explaining of how to use this package
 
-## Gloable access to context
+## Global access to context
 ```dart
   ///If you need context in any file in your code you can use it
   Go.context;
@@ -48,7 +48,7 @@ Explaining of how to use this package
   ///If you want to pop sothing before
   ///pushing to another widget you could use it,
   ///just pass your [widget] to go
-  Go.backAndto(HomePage());
+  Go.backAndTo(HomePage());
 ```
 ## Navigation using route name
 ```dart
@@ -69,7 +69,7 @@ Explaining of how to use this package
   ///If you want to pop sothing before
   ///pushing to another widget you could use it,
   ///just pass your route [name] to go
-  Go.backAndtoName("/homePage");
+  Go.backAndToName("/homePage");
 ```
 ## Back to previous page
 ```dart
@@ -102,11 +102,17 @@ Explaining of how to use this package
   ///You can use all [showMaterialBanner] proparties as usuall.
   Go.materialBanner(MyCustomMaterialBanner());
 ```
-## Gloable access to scaffoldMessenger
+## Global access to scaffoldMessenger
 ```dart
   ///If you need any thing from [ScaffoldMessenger.of(context)]
   ///you can use it wherevere in your code without need any context.
   Go.scaffoldMessenger;
+```
+## Global access to Theme
+```dart
+  ///If you need any thing from [Theme.of(context)]
+  ///you can use it wherevere in your code without need any context.
+  Go.theme;
 ```
 ## Additional information
 
