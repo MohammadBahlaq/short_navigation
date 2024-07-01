@@ -12,6 +12,12 @@ class Go {
 
   ///This is simple navigation all you have to do
   ///just pass your [widget] to go
+
+  // static Future<void> toRawDialogRoute()async{}
+  // static Future<void> toModalBottomSheetRoute()async{}
+  // static Future<void> toDialogRoute()async{}
+  // static Future<void> toPageRouteBuilder()async{}
+
   static Future<void> to(
     Widget page, {
     bool allowSnapshotting = true,
