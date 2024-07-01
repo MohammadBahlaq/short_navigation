@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/MohammadBahlaq/short_navigation/main/assets/Designer%20(1).jpeg" height="200" width="1000">
+<img src="https://raw.githubusercontent.com/MohammadBahlaq/short_navigation/main/assets/Designer%20(1).jpeg" height="220" width="800">
 
 
 Simple package helps you to do navigation in short line without using context (BuildCotext)
