@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Go {
+part 'bottom_sheet_route.dart';
+part 'dialog_route.dart';
+part 'messenger.dart';
+part 'of.dart';
+part 'page_route_builder.dart';
+part 'raw_dialog_route.dart';
+
+abstract class Go {
   static final GlobalKey<NavigatorState> _navigatorKey =
       GlobalKey<NavigatorState>();
 
@@ -12,13 +19,7 @@ class Go {
 
   ///This is simple navigation all you have to do
   ///just pass your [widget] to go
-
-  // static Future<void> toRawDialogRoute()async{}
-  // static Future<void> toModalBottomSheetRoute()async{}
-  // static Future<void> toDialogRoute()async{}
-  // static Future<void> toPageRouteBuilder()async{}
-
-  static Future<void> to(
+  static Future<T?> to<T extends Object?>(
     Widget page, {
     bool allowSnapshotting = true,
     bool barrierDismissible = false,
@@ -26,7 +27,7 @@ class Go {
     bool maintainState = true,
     RouteSettings? settings,
   }) async {
-    navigatorKey.currentState?.push(
+    return navigatorKey.currentState?.push<T>(
       MaterialPageRoute(
         builder: (context) => page,
         allowSnapshotting: allowSnapshotting,
@@ -41,7 +42,7 @@ class Go {
   ///This is simple navigation all you have to do
   ///just pass your [widget] to go and it will
   ///remove previous route from the tree
-  static Future<void> toReplace(
+  static Future<T?> toReplace<T extends Object?, TO extends Object?>(
     Widget page, {
     bool allowSnapshotting = true,
     bool barrierDismissible = false,
@@ -49,7 +50,7 @@ class Go {
     bool maintainState = true,
     RouteSettings? settings,
   }) async {
-    navigatorKey.currentState?.pushReplacement(
+    return navigatorKey.currentState?.pushReplacement<T, TO>(
       MaterialPageRoute(
         builder: (context) => page,
         allowSnapshotting: allowSnapshotting,
@@ -64,7 +65,7 @@ class Go {
   ///This is simple navigation all you have to do
   ///just pass your [widget] to go and it will
   ///remove all routes from the tree
-  static Future<void> toRemoveAll(
+  static Future<T?> toRemoveAll<T extends Object?>(
     Widget page, {
     bool allowSnapshotting = true,
     bool barrierDismissible = false,
@@ -72,7 +73,7 @@ class Go {
     bool maintainState = true,
     RouteSettings? settings,
   }) async {
-    navigatorKey.currentState?.pushAndRemoveUntil(
+    return navigatorKey.currentState?.pushAndRemoveUntil<T>(
       MaterialPageRoute(
         builder: (context) => page,
         allowSnapshotting: allowSnapshotting,
@@ -95,8 +96,9 @@ class Go {
 
   ///This is simple navigation all you have to do
   ///just passing your route [name] to go
-  static Future<void> toName(String page, {Object? arguments}) async {
-    navigatorKey.currentState?.pushNamed(
+  static Future<T?> toName<T extends Object?>(String page,
+      {Object? arguments}) async {
+    return navigatorKey.currentState?.pushNamed<T>(
       page,
       arguments: arguments,
     );
@@ -105,8 +107,10 @@ class Go {
   ///This is simple navigation all you have to do
   ///just pass your route [name] to go and it will
   ///remove previous route from the tree
-  static Future<void> toReplaceName(String page, {Object? arguments}) async {
-    navigatorKey.currentState?.pushReplacementNamed(
+  static Future<T?> toReplaceName<T extends Object?, TO extends Object?>(
+      String page,
+      {Object? arguments}) async {
+    return navigatorKey.currentState?.pushReplacementNamed<T, TO>(
       page,
       arguments: arguments,
     );
@@ -115,8 +119,9 @@ class Go {
   ///This is simple navigation all you have to do
   ///just pass your route [name] to go and it will
   ///remove all routes from the tree
-  static Future<void> toNameRemoveAll(String page, {Object? arguments}) async {
-    navigatorKey.currentState?.pushNamedAndRemoveUntil(
+  static Future<T?> toNameRemoveAll<T extends Object?>(String page,
+      {Object? arguments}) async {
+    return navigatorKey.currentState?.pushNamedAndRemoveUntil<T>(
       page,
       (route) => false,
       arguments: arguments,
@@ -126,10 +131,14 @@ class Go {
   ///If you want to pop sothing before
   ///pushing to another widget you could use it,
   ///just pass your route [name] to go
-  static Future<void> backAndToName(String page, {Object? arguments}) async {
-    navigatorKey.currentState?.popAndPushNamed(
+  static Future<T?> backAndToName<T extends Object?, TO extends Object?>(
+      String page,
+      {Object? arguments,
+      TO? result}) async {
+    return navigatorKey.currentState?.popAndPushNamed<T, TO>(
       page,
       arguments: arguments,
+      result: result,
     );
   }
 
@@ -138,7 +147,7 @@ class Go {
   ///have to pass how many time you want to pop
   ///using [numOfBacks].
   ///There is no need to pass [numOfBacks] if you just want to pop one time.
-  static void back([int? numOfBacks]) async {
+  static void multiBack([int? numOfBacks]) async {
     if (numOfBacks == null) {
       navigatorKey.currentState?.pop();
     } else {
@@ -148,110 +157,7 @@ class Go {
     }
   }
 
-  ///If you wnat to [showDialog] without using context
-  ///you have to use this function and the package will pass the context automaticlly.
-  ///You can use all [showDialog] proparties as usuall.
-  static Future<void> dialog(
-    Widget content, {
-    bool barrierDismissible = true,
-    Color? barrierColor,
-    String? barrierLabel,
-    bool useSafeArea = true,
-    bool useRootNavigator = true,
-    RouteSettings? routeSettings,
-    Offset? anchorPoint,
-    TraversalEdgeBehavior? traversalEdgeBehavior,
-  }) async {
-    showDialog(
-      context: context,
-      builder: (context) => content,
-      barrierDismissible: barrierDismissible,
-      barrierColor: barrierColor,
-      barrierLabel: barrierLabel,
-      useSafeArea: useSafeArea,
-      useRootNavigator: useRootNavigator,
-      routeSettings: routeSettings,
-      anchorPoint: anchorPoint,
-      traversalEdgeBehavior: traversalEdgeBehavior,
-    );
+  static void back<T extends Object?>([T? result]) async {
+    return navigatorKey.currentState?.pop(result);
   }
-
-  ///If you wnat to [showModalBottomSheet] without using context
-  ///you have to use this function and the package will pass the context automaticlly.
-  ///You can use all [showModalBottomSheet] proparties as usuall.
-  static Future<void> bottomSheet(
-    Widget content, {
-    Color? backgroundColor,
-    String? barrierLabel,
-    double? elevation,
-    ShapeBorder? shape,
-    Clip? clipBehavior,
-    BoxConstraints? constraints,
-    Color? barrierColor,
-    bool isScrollControlled = false,
-    double scrollControlDisabledMaxHeightRatio = 9.0 / 16.0,
-    bool useRootNavigator = false,
-    bool isDismissible = true,
-    bool enableDrag = true,
-    bool? showDragHandle,
-    bool useSafeArea = false,
-    RouteSettings? routeSettings,
-    AnimationController? transitionAnimationController,
-    Offset? anchorPoint,
-    AnimationStyle? sheetAnimationStyle,
-  }) async {
-    showModalBottomSheet(
-      context: context,
-      builder: (context) => content,
-      backgroundColor: backgroundColor,
-      barrierLabel: barrierLabel,
-      elevation: elevation,
-      shape: shape,
-      clipBehavior: clipBehavior,
-      constraints: constraints,
-      barrierColor: barrierColor,
-      isScrollControlled: isScrollControlled,
-      scrollControlDisabledMaxHeightRatio: scrollControlDisabledMaxHeightRatio,
-      useRootNavigator: useRootNavigator,
-      isDismissible: isDismissible,
-      enableDrag: enableDrag,
-      showDragHandle: showDragHandle,
-      useSafeArea: useSafeArea,
-      routeSettings: routeSettings,
-      transitionAnimationController: transitionAnimationController,
-      anchorPoint: anchorPoint,
-      sheetAnimationStyle: sheetAnimationStyle,
-    );
-    return;
-  }
-
-  ///If you wnat to [showSnackBar] without using context
-  ///you have to use this function and the package will pass the context automaticlly.
-  ///You can use all [showSnackBar] proparties as usuall.
-  static ScaffoldFeatureController<SnackBar, SnackBarClosedReason> snackBar(
-    SnackBar snackBar, {
-    AnimationStyle? snackBarAnimationStyle,
-  }) {
-    return ScaffoldMessenger.of(context).showSnackBar(
-      snackBar,
-      snackBarAnimationStyle: snackBarAnimationStyle,
-    );
-  }
-
-  ///If you wnat to [showMaterialBanner] without using context
-  ///you have to use this function and the package will pass the context automaticlly.
-  ///You can use all [showMaterialBanner] proparties as usuall.
-  static ScaffoldFeatureController<MaterialBanner, MaterialBannerClosedReason>
-      materialBanner(MaterialBanner materialBanner) {
-    return ScaffoldMessenger.of(context).showMaterialBanner(materialBanner);
-  }
-
-  ///If you need any thing from [ScaffoldMessenger.of(context)]
-  ///you can use it wherevere in your code without need any context.
-  static ScaffoldMessengerState get scaffoldMessenger =>
-      ScaffoldMessenger.of(context);
-
-  ///If you need any thing from [Theme.of(context)]
-  ///you can use it wherevere in your code without need any context.
-  static ThemeData get theme => Theme.of(context);
 }
