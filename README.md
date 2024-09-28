@@ -270,6 +270,10 @@ Explaining of how to use this package
     ///If you need any thing from [ScaffoldMessenger.of(context)]
     ///you can use it wherevere in your code without need any context.
     GofContext.scaffoldMessenger;
+
+    ///If you need any thing from [Navigator.of(context)]
+    ///you can use it wherevere in your code without need any context.
+    GofContext.navigator;
 ```
 
 ## Additional information
