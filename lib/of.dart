@@ -39,4 +39,8 @@ abstract class GofContext {
   ///you can use it wherevere in your code without need any context.
   static ScaffoldMessengerState get scaffoldMessenger =>
       ScaffoldMessenger.of(Go.context);
+
+  ///If you need any thing from [Navigator.of(context)]
+  ///you can use it wherevere in your code without need any context.
+  static NavigatorState get navigator => Navigator.of(Go.context);
 }
