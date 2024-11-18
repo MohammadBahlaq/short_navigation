@@ -8,8 +8,7 @@ part 'page_route_builder.dart';
 part 'raw_dialog_route.dart';
 
 abstract class Go {
-  static final GlobalKey<NavigatorState> _navigatorKey =
-      GlobalKey<NavigatorState>();
+  static final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
 
   ///This is navigatorKey you have to pass it in the MaterialApp in the main.dart
   static GlobalKey<NavigatorState> get navigatorKey => _navigatorKey;
@@ -65,14 +64,17 @@ abstract class Go {
   ///This is simple navigation all you have to do
   ///just pass your [widget] to go and it will
   ///remove all routes from the tree
-  static Future<T?> toRemoveAll<T extends Object?>(
+  static Future<T?> toRemoveUntil<T extends Object?>(
     Widget page, {
     bool allowSnapshotting = true,
     bool barrierDismissible = false,
     bool fullscreenDialog = false,
     bool maintainState = true,
     RouteSettings? settings,
+    bool Function(Route<dynamic>)? predicate,
   }) async {
+    predicate ??= (route) => false;
+
     return navigatorKey.currentState?.pushAndRemoveUntil<T>(
       MaterialPageRoute(
         builder: (context) => page,
@@ -82,7 +84,7 @@ abstract class Go {
         maintainState: maintainState,
         settings: settings,
       ),
-      (route) => false,
+      predicate,
     );
   }
 
@@ -96,8 +98,7 @@ abstract class Go {
 
   ///This is simple navigation all you have to do
   ///just passing your route [name] to go
-  static Future<T?> toName<T extends Object?>(String page,
-      {Object? arguments}) async {
+  static Future<T?> toName<T extends Object?>(String page, {Object? arguments}) async {
     return navigatorKey.currentState?.pushNamed<T>(
       page,
       arguments: arguments,
@@ -107,9 +108,7 @@ abstract class Go {
   ///This is simple navigation all you have to do
   ///just pass your route [name] to go and it will
   ///remove previous route from the tree
-  static Future<T?> toReplaceName<T extends Object?, TO extends Object?>(
-      String page,
-      {Object? arguments}) async {
+  static Future<T?> toReplaceName<T extends Object?, TO extends Object?>(String page, {Object? arguments}) async {
     return navigatorKey.currentState?.pushReplacementNamed<T, TO>(
       page,
       arguments: arguments,
@@ -119,11 +118,16 @@ abstract class Go {
   ///This is simple navigation all you have to do
   ///just pass your route [name] to go and it will
   ///remove all routes from the tree
-  static Future<T?> toNameRemoveAll<T extends Object?>(String page,
-      {Object? arguments}) async {
+  static Future<T?> toNameRemoveAll<T extends Object?>(
+    String page, {
+    Object? arguments,
+    bool Function(Route<dynamic>)? predicate,
+  }) async {
+    predicate ??= (route) => false;
+
     return navigatorKey.currentState?.pushNamedAndRemoveUntil<T>(
       page,
-      (route) => false,
+      predicate,
       arguments: arguments,
     );
   }
@@ -131,10 +135,7 @@ abstract class Go {
   ///If you want to pop sothing before
   ///pushing to another widget you could use it,
   ///just pass your route [name] to go
-  static Future<T?> backAndToName<T extends Object?, TO extends Object?>(
-      String page,
-      {Object? arguments,
-      TO? result}) async {
+  static Future<T?> backAndToName<T extends Object?, TO extends Object?>(String page, {Object? arguments, TO? result}) async {
     return navigatorKey.currentState?.popAndPushNamed<T, TO>(
       page,
       arguments: arguments,

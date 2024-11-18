@@ -12,9 +12,7 @@ abstract class GoRawDialogRoute {
     String? barrierLabel,
     Offset? anchorPoint,
     TraversalEdgeBehavior? traversalEdgeBehavior,
-    Widget Function(BuildContext context, Animation<double> animation,
-            Animation<double> secondaryAnimation, Widget child)?
-        transitionBuilder,
+    Widget Function(BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child)? transitionBuilder,
   }) async {
     return Go.navigatorKey.currentState?.push<T>(
       RawDialogRoute(
@@ -43,9 +41,7 @@ abstract class GoRawDialogRoute {
     String? barrierLabel,
     Offset? anchorPoint,
     TraversalEdgeBehavior? traversalEdgeBehavior,
-    Widget Function(BuildContext context, Animation<double> animation,
-            Animation<double> secondaryAnimation, Widget child)?
-        transitionBuilder,
+    Widget Function(BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child)? transitionBuilder,
   }) async {
     return Go.navigatorKey.currentState?.pushReplacement<T, TO>(
       RawDialogRoute(
@@ -65,7 +61,7 @@ abstract class GoRawDialogRoute {
   ///This is simple navigation all you have to do
   ///just pass your [widget] to go and it will
   ///remove all routes from the tree
-  static Future<T?> toRemoveAll<T extends Object?>(
+  static Future<T?> toRemoveUntil<T extends Object?>(
     Widget page, {
     RouteSettings? settings,
     Duration transitionDuration = const Duration(milliseconds: 200),
@@ -74,10 +70,11 @@ abstract class GoRawDialogRoute {
     String? barrierLabel,
     Offset? anchorPoint,
     TraversalEdgeBehavior? traversalEdgeBehavior,
-    Widget Function(BuildContext context, Animation<double> animation,
-            Animation<double> secondaryAnimation, Widget child)?
-        transitionBuilder,
+    Widget Function(BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child)? transitionBuilder,
+    bool Function(Route<dynamic>)? predicate,
   }) async {
+    predicate ??= (route) => false;
+
     return Go.navigatorKey.currentState?.pushAndRemoveUntil<T>(
       RawDialogRoute(
         pageBuilder: (context, animation, secondaryAnimation) => page,
@@ -90,7 +87,7 @@ abstract class GoRawDialogRoute {
         anchorPoint: anchorPoint,
         traversalEdgeBehavior: traversalEdgeBehavior,
       ),
-      (route) => false,
+      predicate,
     );
   }
 

@@ -63,7 +63,7 @@ abstract class GoDialogRoute {
   ///This is simple navigation all you have to do
   ///just pass your [widget] to go and it will
   ///remove all routes from the tree
-  static Future<T?> toRemoveAll<T extends Object?>(
+  static Future<T?> toRemoveUntil<T extends Object?>(
     Widget page, {
     CapturedThemes? themes,
     Color barrierColor = Colors.black54,
@@ -73,7 +73,10 @@ abstract class GoDialogRoute {
     RouteSettings? settings,
     Offset? anchorPoint,
     TraversalEdgeBehavior? traversalEdgeBehavior,
+    bool Function(Route<dynamic>)? predicate,
   }) async {
+    predicate ??= (route) => false;
+
     return Go.navigatorKey.currentState?.pushAndRemoveUntil<T>(
       DialogRoute(
         context: Go.context,
@@ -87,7 +90,7 @@ abstract class GoDialogRoute {
         anchorPoint: anchorPoint,
         traversalEdgeBehavior: traversalEdgeBehavior,
       ),
-      (route) => false,
+      predicate,
     );
   }
 

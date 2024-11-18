@@ -1,4 +1,4 @@
-## 1.1.0
+## 1.2.0
 
 * Support new Routes [DialogRoute, RawDialogRoute, PageRouteBuilder, ModalBottomSheetRoute]
 * Support passing T to Routes and return values

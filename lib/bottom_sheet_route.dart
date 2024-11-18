@@ -40,8 +40,7 @@ abstract class GoBottomSheetRoute {
         enableDrag: enableDrag,
         isDismissible: isDismissible,
         modalBarrierColor: modalBarrierColor,
-        scrollControlDisabledMaxHeightRatio:
-            scrollControlDisabledMaxHeightRatio,
+        scrollControlDisabledMaxHeightRatio: scrollControlDisabledMaxHeightRatio,
         settings: settings,
         shape: shape,
         sheetAnimationStyle: sheetAnimationStyle,
@@ -92,8 +91,7 @@ abstract class GoBottomSheetRoute {
         enableDrag: enableDrag,
         isDismissible: isDismissible,
         modalBarrierColor: modalBarrierColor,
-        scrollControlDisabledMaxHeightRatio:
-            scrollControlDisabledMaxHeightRatio,
+        scrollControlDisabledMaxHeightRatio: scrollControlDisabledMaxHeightRatio,
         settings: settings,
         shape: shape,
         sheetAnimationStyle: sheetAnimationStyle,
@@ -107,7 +105,7 @@ abstract class GoBottomSheetRoute {
   ///This is simple navigation all you have to do
   ///just pass your [widget] to go and it will
   ///remove all routes from the tree
-  static Future<T?> toRemoveAll<T extends Object?>(
+  static Future<T?> toRemoveUntil<T extends Object?>(
     Widget page, {
     bool isScrollControlled = true,
     Offset? anchorPoint,
@@ -128,7 +126,10 @@ abstract class GoBottomSheetRoute {
     bool? showDragHandle,
     AnimationController? transitionAnimationController,
     bool useSafeArea = false,
+    bool Function(Route<dynamic>)? predicate,
   }) async {
+    predicate ??= (route) => false;
+
     return Go.navigatorKey.currentState?.pushAndRemoveUntil<T>(
       ModalBottomSheetRoute(
         builder: (context) => page,
@@ -144,8 +145,7 @@ abstract class GoBottomSheetRoute {
         enableDrag: enableDrag,
         isDismissible: isDismissible,
         modalBarrierColor: modalBarrierColor,
-        scrollControlDisabledMaxHeightRatio:
-            scrollControlDisabledMaxHeightRatio,
+        scrollControlDisabledMaxHeightRatio: scrollControlDisabledMaxHeightRatio,
         settings: settings,
         shape: shape,
         sheetAnimationStyle: sheetAnimationStyle,
@@ -153,7 +153,7 @@ abstract class GoBottomSheetRoute {
         transitionAnimationController: transitionAnimationController,
         useSafeArea: useSafeArea,
       ),
-      (route) => false,
+      predicate,
     );
   }
 
