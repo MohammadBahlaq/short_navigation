@@ -1,4 +1,4 @@
-part of 'short_navigation.dart';
+part of '../short_navigation.dart';
 
 abstract class GoBottomSheetRoute {
   ///This is simple navigation all you have to do
@@ -40,8 +40,7 @@ abstract class GoBottomSheetRoute {
         enableDrag: enableDrag,
         isDismissible: isDismissible,
         modalBarrierColor: modalBarrierColor,
-        scrollControlDisabledMaxHeightRatio:
-            scrollControlDisabledMaxHeightRatio,
+        scrollControlDisabledMaxHeightRatio: scrollControlDisabledMaxHeightRatio,
         settings: settings,
         shape: shape,
         sheetAnimationStyle: sheetAnimationStyle,
@@ -92,8 +91,7 @@ abstract class GoBottomSheetRoute {
         enableDrag: enableDrag,
         isDismissible: isDismissible,
         modalBarrierColor: modalBarrierColor,
-        scrollControlDisabledMaxHeightRatio:
-            scrollControlDisabledMaxHeightRatio,
+        scrollControlDisabledMaxHeightRatio: scrollControlDisabledMaxHeightRatio,
         settings: settings,
         shape: shape,
         sheetAnimationStyle: sheetAnimationStyle,
@@ -147,8 +145,7 @@ abstract class GoBottomSheetRoute {
         enableDrag: enableDrag,
         isDismissible: isDismissible,
         modalBarrierColor: modalBarrierColor,
-        scrollControlDisabledMaxHeightRatio:
-            scrollControlDisabledMaxHeightRatio,
+        scrollControlDisabledMaxHeightRatio: scrollControlDisabledMaxHeightRatio,
         settings: settings,
         shape: shape,
         sheetAnimationStyle: sheetAnimationStyle,

@@ -1,28 +1,27 @@
-part of 'short_navigation.dart';
+part of '../short_navigation.dart';
 
-abstract class GoDialogRoute {
+abstract class GoRawDialogRoute {
   ///This is simple navigation all you have to do
   ///just pass your [widget] to go
   static Future<T?> to<T extends Object?>(
     Widget page, {
-    CapturedThemes? themes,
-    Color barrierColor = Colors.black54,
-    bool barrierDismissible = true,
-    String? barrierLabel,
-    bool useSafeArea = true,
     RouteSettings? settings,
+    Duration transitionDuration = const Duration(milliseconds: 200),
+    bool barrierDismissible = true,
+    Color barrierColor = const Color(0x80000000),
+    String? barrierLabel,
     Offset? anchorPoint,
     TraversalEdgeBehavior? traversalEdgeBehavior,
+    Widget Function(BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child)? transitionBuilder,
   }) async {
     return Go.navigatorKey.currentState?.push<T>(
-      DialogRoute(
-        context: Go.context,
-        builder: (context) => page,
-        themes: themes,
-        barrierColor: barrierColor,
+      RawDialogRoute(
+        pageBuilder: (context, animation, secondaryAnimation) => page,
         barrierDismissible: barrierDismissible,
+        barrierColor: barrierColor,
         barrierLabel: barrierLabel,
-        useSafeArea: useSafeArea,
+        transitionDuration: transitionDuration,
+        transitionBuilder: transitionBuilder,
         settings: settings,
         anchorPoint: anchorPoint,
         traversalEdgeBehavior: traversalEdgeBehavior,
@@ -35,24 +34,23 @@ abstract class GoDialogRoute {
   ///remove previous route from the tree
   static Future<T?> toReplace<T extends Object?, TO extends Object?>(
     Widget page, {
-    CapturedThemes? themes,
-    Color barrierColor = Colors.black54,
-    bool barrierDismissible = true,
-    String? barrierLabel,
-    bool useSafeArea = true,
     RouteSettings? settings,
+    Duration transitionDuration = const Duration(milliseconds: 200),
+    bool barrierDismissible = true,
+    Color barrierColor = const Color(0x80000000),
+    String? barrierLabel,
     Offset? anchorPoint,
     TraversalEdgeBehavior? traversalEdgeBehavior,
+    Widget Function(BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child)? transitionBuilder,
   }) async {
     return Go.navigatorKey.currentState?.pushReplacement<T, TO>(
-      DialogRoute(
-        context: Go.context,
-        builder: (context) => page,
-        themes: themes,
-        barrierColor: barrierColor,
+      RawDialogRoute(
+        pageBuilder: (context, animation, secondaryAnimation) => page,
         barrierDismissible: barrierDismissible,
+        barrierColor: barrierColor,
         barrierLabel: barrierLabel,
-        useSafeArea: useSafeArea,
+        transitionDuration: transitionDuration,
+        transitionBuilder: transitionBuilder,
         settings: settings,
         anchorPoint: anchorPoint,
         traversalEdgeBehavior: traversalEdgeBehavior,
@@ -65,27 +63,26 @@ abstract class GoDialogRoute {
   ///remove all routes from the tree
   static Future<T?> toRemoveUntil<T extends Object?>(
     Widget page, {
-    CapturedThemes? themes,
-    Color barrierColor = Colors.black54,
-    bool barrierDismissible = true,
-    String? barrierLabel,
-    bool useSafeArea = true,
     RouteSettings? settings,
+    Duration transitionDuration = const Duration(milliseconds: 200),
+    bool barrierDismissible = true,
+    Color barrierColor = const Color(0x80000000),
+    String? barrierLabel,
     Offset? anchorPoint,
     TraversalEdgeBehavior? traversalEdgeBehavior,
+    Widget Function(BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child)? transitionBuilder,
     bool Function(Route<dynamic>)? predicate,
   }) async {
     predicate ??= (route) => false;
 
     return Go.navigatorKey.currentState?.pushAndRemoveUntil<T>(
-      DialogRoute(
-        context: Go.context,
-        builder: (context) => page,
-        themes: themes,
-        barrierColor: barrierColor,
+      RawDialogRoute(
+        pageBuilder: (context, animation, secondaryAnimation) => page,
         barrierDismissible: barrierDismissible,
+        barrierColor: barrierColor,
         barrierLabel: barrierLabel,
-        useSafeArea: useSafeArea,
+        transitionDuration: transitionDuration,
+        transitionBuilder: transitionBuilder,
         settings: settings,
         anchorPoint: anchorPoint,
         traversalEdgeBehavior: traversalEdgeBehavior,

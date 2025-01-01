@@ -25,14 +25,17 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ElevatedButton(
-        onPressed: navigation,
-        child: const Text("Go to Second Page"),
+      backgroundColor: Colors.red,
+      body: Center(
+        child: ElevatedButton(
+          onPressed: navigation,
+          child: const Text("Go to Second Page"),
+        ),
       ),
     );
   }
 
-  navigation() {
+  void navigation() {
     Go.to(SecondPage());
   }
 }
@@ -43,9 +46,12 @@ class SecondPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ElevatedButton(
-        onPressed: () => Go.back(),
-        child: const Text("Go to Second Page"),
+      backgroundColor: Colors.green,
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () => Go.back(),
+          child: const Text("Back to First Page"),
+        ),
       ),
     );
   }
