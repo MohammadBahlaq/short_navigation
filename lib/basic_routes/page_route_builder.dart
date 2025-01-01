@@ -55,7 +55,9 @@ abstract class GoPageRoute {
     bool maintainState = true,
     bool fullscreenDialog = false,
     bool allowSnapshotting = true,
-    Widget Function(BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) transitionsBuilder = _defaultTransitionsBuilder,
+    Widget Function(BuildContext context, Animation<double> animation,
+            Animation<double> secondaryAnimation, Widget child)
+        transitionsBuilder = _defaultTransitionsBuilder,
   }) async {
     return Go.navigatorKey.currentState?.pushReplacement<T, TO>(
       PageRouteBuilder(
@@ -90,7 +92,9 @@ abstract class GoPageRoute {
     bool maintainState = true,
     bool fullscreenDialog = false,
     bool allowSnapshotting = true,
-    Widget Function(BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) transitionsBuilder = _defaultTransitionsBuilder,
+    Widget Function(BuildContext context, Animation<double> animation,
+            Animation<double> secondaryAnimation, Widget child)
+        transitionsBuilder = _defaultTransitionsBuilder,
     bool Function(Route<dynamic>)? predicate,
   }) async {
     predicate ??= (route) => false;
@@ -123,4 +127,9 @@ abstract class GoPageRoute {
   }
 }
 
-Widget _defaultTransitionsBuilder(BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) => child;
+Widget _defaultTransitionsBuilder(
+        BuildContext context,
+        Animation<double> animation,
+        Animation<double> secondaryAnimation,
+        Widget child) =>
+    child;

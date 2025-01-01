@@ -13,7 +13,8 @@ part 'messenger.dart';
 part 'of.dart';
 
 abstract class Go {
-  static final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
+  static final GlobalKey<NavigatorState> _navigatorKey =
+      GlobalKey<NavigatorState>();
 
   ///This is navigatorKey you have to pass it in the MaterialApp in the main.dart
   static GlobalKey<NavigatorState> get navigatorKey => _navigatorKey;
@@ -103,7 +104,8 @@ abstract class Go {
 
   ///This is simple navigation all you have to do
   ///just passing your route [name] to go
-  static Future<T?> toName<T extends Object?>(String page, {Object? arguments}) async {
+  static Future<T?> toName<T extends Object?>(String page,
+      {Object? arguments}) async {
     return navigatorKey.currentState?.pushNamed<T>(
       page,
       arguments: arguments,
@@ -113,7 +115,9 @@ abstract class Go {
   ///This is simple navigation all you have to do
   ///just pass your route [name] to go and it will
   ///remove previous route from the tree
-  static Future<T?> toReplaceName<T extends Object?, TO extends Object?>(String page, {Object? arguments}) async {
+  static Future<T?> toReplaceName<T extends Object?, TO extends Object?>(
+      String page,
+      {Object? arguments}) async {
     return navigatorKey.currentState?.pushReplacementNamed<T, TO>(
       page,
       arguments: arguments,
@@ -140,7 +144,10 @@ abstract class Go {
   ///If you want to pop sothing before
   ///pushing to another widget you could use it,
   ///just pass your route [name] to go
-  static Future<T?> backAndToName<T extends Object?, TO extends Object?>(String page, {Object? arguments, TO? result}) async {
+  static Future<T?> backAndToName<T extends Object?, TO extends Object?>(
+      String page,
+      {Object? arguments,
+      TO? result}) async {
     return navigatorKey.currentState?.popAndPushNamed<T, TO>(
       page,
       arguments: arguments,

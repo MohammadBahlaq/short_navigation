@@ -30,7 +30,8 @@ class GoFade {
         maintainState: maintainState,
         fullscreenDialog: fullscreenDialog,
         allowSnapshotting: allowSnapshotting,
-        transitionsBuilder: (context, animation, secondaryAnimation, child) => _fadeTransitionBuilder(
+        transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+            _fadeTransitionBuilder(
           animation,
           curve,
           child,
@@ -69,7 +70,8 @@ class GoFade {
         maintainState: maintainState,
         fullscreenDialog: fullscreenDialog,
         allowSnapshotting: allowSnapshotting,
-        transitionsBuilder: (context, animation, secondaryAnimation, child) => _fadeTransitionBuilder(
+        transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+            _fadeTransitionBuilder(
           animation,
           curve,
           child,
@@ -111,7 +113,8 @@ class GoFade {
         maintainState: maintainState,
         fullscreenDialog: fullscreenDialog,
         allowSnapshotting: allowSnapshotting,
-        transitionsBuilder: (context, animation, secondaryAnimation, child) => _fadeTransitionBuilder(
+        transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+            _fadeTransitionBuilder(
           animation,
           curve,
           child,

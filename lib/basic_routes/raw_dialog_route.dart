@@ -12,7 +12,9 @@ abstract class GoRawDialogRoute {
     String? barrierLabel,
     Offset? anchorPoint,
     TraversalEdgeBehavior? traversalEdgeBehavior,
-    Widget Function(BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child)? transitionBuilder,
+    Widget Function(BuildContext context, Animation<double> animation,
+            Animation<double> secondaryAnimation, Widget child)?
+        transitionBuilder,
   }) async {
     return Go.navigatorKey.currentState?.push<T>(
       RawDialogRoute(
@@ -41,7 +43,9 @@ abstract class GoRawDialogRoute {
     String? barrierLabel,
     Offset? anchorPoint,
     TraversalEdgeBehavior? traversalEdgeBehavior,
-    Widget Function(BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child)? transitionBuilder,
+    Widget Function(BuildContext context, Animation<double> animation,
+            Animation<double> secondaryAnimation, Widget child)?
+        transitionBuilder,
   }) async {
     return Go.navigatorKey.currentState?.pushReplacement<T, TO>(
       RawDialogRoute(
@@ -70,7 +74,9 @@ abstract class GoRawDialogRoute {
     String? barrierLabel,
     Offset? anchorPoint,
     TraversalEdgeBehavior? traversalEdgeBehavior,
-    Widget Function(BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child)? transitionBuilder,
+    Widget Function(BuildContext context, Animation<double> animation,
+            Animation<double> secondaryAnimation, Widget child)?
+        transitionBuilder,
     bool Function(Route<dynamic>)? predicate,
   }) async {
     predicate ??= (route) => false;

@@ -31,7 +31,8 @@ class GoRotation {
         maintainState: maintainState,
         fullscreenDialog: fullscreenDialog,
         allowSnapshotting: allowSnapshotting,
-        transitionsBuilder: (context, animation, secondaryAnimation, child) => _rotationTransitionBuilder(
+        transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+            _rotationTransitionBuilder(
           numberOfTurns,
           animation,
           curve,
@@ -72,7 +73,8 @@ class GoRotation {
         maintainState: maintainState,
         fullscreenDialog: fullscreenDialog,
         allowSnapshotting: allowSnapshotting,
-        transitionsBuilder: (context, animation, secondaryAnimation, child) => _rotationTransitionBuilder(
+        transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+            _rotationTransitionBuilder(
           numberOfTurns,
           animation,
           curve,
@@ -116,7 +118,8 @@ class GoRotation {
         maintainState: maintainState,
         fullscreenDialog: fullscreenDialog,
         allowSnapshotting: allowSnapshotting,
-        transitionsBuilder: (context, animation, secondaryAnimation, child) => _rotationTransitionBuilder(
+        transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+            _rotationTransitionBuilder(
           numberOfTurns,
           animation,
           curve,

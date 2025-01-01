@@ -39,7 +39,8 @@ class GoSize {
         maintainState: maintainState,
         fullscreenDialog: fullscreenDialog,
         allowSnapshotting: allowSnapshotting,
-        transitionsBuilder: (context, animation, secondaryAnimation, child) => _sizeTransitionBuilder(
+        transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+            _sizeTransitionBuilder(
           sizeDirection,
           animation,
           curve,
@@ -80,7 +81,8 @@ class GoSize {
         maintainState: maintainState,
         fullscreenDialog: fullscreenDialog,
         allowSnapshotting: allowSnapshotting,
-        transitionsBuilder: (context, animation, secondaryAnimation, child) => _sizeTransitionBuilder(
+        transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+            _sizeTransitionBuilder(
           sizeDirection,
           animation,
           curve,
@@ -124,7 +126,8 @@ class GoSize {
         maintainState: maintainState,
         fullscreenDialog: fullscreenDialog,
         allowSnapshotting: allowSnapshotting,
-        transitionsBuilder: (context, animation, secondaryAnimation, child) => _sizeTransitionBuilder(
+        transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+            _sizeTransitionBuilder(
           sizeDirection,
           animation,
           curve,

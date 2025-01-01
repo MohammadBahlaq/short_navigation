@@ -40,7 +40,8 @@ abstract class GoBottomSheetRoute {
         enableDrag: enableDrag,
         isDismissible: isDismissible,
         modalBarrierColor: modalBarrierColor,
-        scrollControlDisabledMaxHeightRatio: scrollControlDisabledMaxHeightRatio,
+        scrollControlDisabledMaxHeightRatio:
+            scrollControlDisabledMaxHeightRatio,
         settings: settings,
         shape: shape,
         sheetAnimationStyle: sheetAnimationStyle,
@@ -91,7 +92,8 @@ abstract class GoBottomSheetRoute {
         enableDrag: enableDrag,
         isDismissible: isDismissible,
         modalBarrierColor: modalBarrierColor,
-        scrollControlDisabledMaxHeightRatio: scrollControlDisabledMaxHeightRatio,
+        scrollControlDisabledMaxHeightRatio:
+            scrollControlDisabledMaxHeightRatio,
         settings: settings,
         shape: shape,
         sheetAnimationStyle: sheetAnimationStyle,
@@ -145,7 +147,8 @@ abstract class GoBottomSheetRoute {
         enableDrag: enableDrag,
         isDismissible: isDismissible,
         modalBarrierColor: modalBarrierColor,
-        scrollControlDisabledMaxHeightRatio: scrollControlDisabledMaxHeightRatio,
+        scrollControlDisabledMaxHeightRatio:
+            scrollControlDisabledMaxHeightRatio,
         settings: settings,
         shape: shape,
         sheetAnimationStyle: sheetAnimationStyle,
