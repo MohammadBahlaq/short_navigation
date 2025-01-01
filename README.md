@@ -58,6 +58,32 @@ Explaining of how to use this package
   Go.backAndTo(HomePage());
 ```
 
+## Navigation with animations [Slide, Scale, Rotation, Size, Fade]
+```dart
+  ///You can navigate using [GoSlide] class
+  ///and you can use slideDirection to chose the slide direction
+  ///and curve to chose any curve you want
+  GoSlide.to(HomePage()) //It will navigate like slide animation
+
+  ///You can navigate using [GoScale] class
+  ///and use curve to chose any curve you want
+  GoScale.to(HomePage()) //It will scale the page gradually during navigation
+
+  ///You can navigate using [GoSize] class
+  ///and you can use sizeDirection to chose the where the navigation will begin
+  ///and curve to chose any curve you want
+  GoSize.to(HomePage()) //It will make the page's size larger smoothly during navigation
+
+  ///You can navigate using [GoRotation] class
+  ///and you can use numberOfTurns to chose how many turns you want the page rotate before navigation
+  ///and use curve to chose any curve you want
+  GoRotation.to(HomePage()) //It will make the page rotate at least one time
+
+  ///You can navigate using [GoFade] class
+  ///and use curve to chose any curve you want
+  GoFade.to(HomePage()) //It will increase opacity smothly during navigation
+```
+
 ## Navigation using [DialogRoute] using class [GoDialogRoute]
 ```dart
   ///Instead of using [Navigator.of(context).push(DialogRoute(........));]
