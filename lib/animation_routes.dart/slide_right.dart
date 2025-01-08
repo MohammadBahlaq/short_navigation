@@ -31,7 +31,8 @@ class GoSlide {
         maintainState: maintainState,
         fullscreenDialog: fullscreenDialog,
         allowSnapshotting: allowSnapshotting,
-        transitionsBuilder: (context, animation, secondaryAnimation, child) => _slideTransitionBuilder(
+        transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+            _slideTransitionBuilder(
           slideDirection,
           animation,
           curve,
@@ -72,7 +73,8 @@ class GoSlide {
         maintainState: maintainState,
         fullscreenDialog: fullscreenDialog,
         allowSnapshotting: allowSnapshotting,
-        transitionsBuilder: (context, animation, secondaryAnimation, child) => _slideTransitionBuilder(
+        transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+            _slideTransitionBuilder(
           slideDirection,
           animation,
           curve,
@@ -116,7 +118,8 @@ class GoSlide {
         maintainState: maintainState,
         fullscreenDialog: fullscreenDialog,
         allowSnapshotting: allowSnapshotting,
-        transitionsBuilder: (context, animation, secondaryAnimation, child) => _slideTransitionBuilder(
+        transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+            _slideTransitionBuilder(
           slideDirection,
           animation,
           curve,
