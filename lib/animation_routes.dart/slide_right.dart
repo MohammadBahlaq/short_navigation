@@ -1,12 +1,5 @@
 part of 'package:short_navigation/short_navigation.dart';
 
-enum SlideDirection {
-  rightLeft,
-  leftright,
-  topBottom,
-  bottomTop,
-}
-
 class GoSlide {
   ///This is simple navigation all you have to do
   ///just pass your [widget] to go
@@ -23,7 +16,7 @@ class GoSlide {
     bool fullscreenDialog = false,
     bool allowSnapshotting = true,
     Curve curve = Curves.linear,
-    SlideDirection slideDirection = SlideDirection.leftright,
+    AxisDirection slideDirection = AxisDirection.left,
   }) async {
     return Go.navigatorKey.currentState?.push<T>(
       PageRouteBuilder(
@@ -38,8 +31,7 @@ class GoSlide {
         maintainState: maintainState,
         fullscreenDialog: fullscreenDialog,
         allowSnapshotting: allowSnapshotting,
-        transitionsBuilder: (context, animation, secondaryAnimation, child) =>
-            _slideTransitionBuilder(
+        transitionsBuilder: (context, animation, secondaryAnimation, child) => _slideTransitionBuilder(
           slideDirection,
           animation,
           curve,
@@ -65,7 +57,7 @@ class GoSlide {
     bool fullscreenDialog = false,
     bool allowSnapshotting = true,
     Curve curve = Curves.linear,
-    SlideDirection slideDirection = SlideDirection.leftright,
+    AxisDirection slideDirection = AxisDirection.left,
   }) async {
     return Go.navigatorKey.currentState?.pushReplacement<T, TO>(
       PageRouteBuilder(
@@ -80,8 +72,7 @@ class GoSlide {
         maintainState: maintainState,
         fullscreenDialog: fullscreenDialog,
         allowSnapshotting: allowSnapshotting,
-        transitionsBuilder: (context, animation, secondaryAnimation, child) =>
-            _slideTransitionBuilder(
+        transitionsBuilder: (context, animation, secondaryAnimation, child) => _slideTransitionBuilder(
           slideDirection,
           animation,
           curve,
@@ -107,7 +98,7 @@ class GoSlide {
     bool fullscreenDialog = false,
     bool allowSnapshotting = true,
     Curve curve = Curves.linear,
-    SlideDirection slideDirection = SlideDirection.leftright,
+    AxisDirection slideDirection = AxisDirection.left,
     bool Function(Route<dynamic>)? predicate,
   }) async {
     predicate ??= (route) => false;
@@ -125,8 +116,7 @@ class GoSlide {
         maintainState: maintainState,
         fullscreenDialog: fullscreenDialog,
         allowSnapshotting: allowSnapshotting,
-        transitionsBuilder: (context, animation, secondaryAnimation, child) =>
-            _slideTransitionBuilder(
+        transitionsBuilder: (context, animation, secondaryAnimation, child) => _slideTransitionBuilder(
           slideDirection,
           animation,
           curve,
@@ -147,7 +137,7 @@ class GoSlide {
 }
 
 Widget _slideTransitionBuilder(
-  SlideDirection slideDirection,
+  AxisDirection slideDirection,
   Animation<double> animation,
   Curve curve,
   Widget child,
@@ -165,24 +155,24 @@ Widget _slideTransitionBuilder(
   );
 }
 
-Tween<Offset> _getTween(SlideDirection slideDirection) {
-  switch (slideDirection) {
-    case SlideDirection.leftright:
+Tween<Offset> _getTween(AxisDirection axisDirection) {
+  switch (axisDirection) {
+    case AxisDirection.left:
       return Tween<Offset>(
         begin: const Offset(-1, 0),
         end: const Offset(0, 0),
       );
-    case SlideDirection.rightLeft:
+    case AxisDirection.right:
       return Tween<Offset>(
         begin: const Offset(1, 0),
         end: const Offset(0, 0),
       );
-    case SlideDirection.topBottom:
+    case AxisDirection.up:
       return Tween<Offset>(
         begin: const Offset(0, -1),
         end: const Offset(0, 0),
       );
-    case SlideDirection.bottomTop:
+    case AxisDirection.down:
       return Tween<Offset>(
         begin: const Offset(0, 1),
         end: const Offset(0, 0),
