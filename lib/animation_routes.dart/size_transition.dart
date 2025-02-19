@@ -6,11 +6,20 @@ enum SizeDirection {
   center,
   top,
   bottom,
+  right,
+  left,
 }
 
 class GoSize {
   ///This is simple navigation all you have to do
-  ///just pass your [widget] to go
+  ///just pass your [widget] to go.
+  ///
+  ///If you use [sizeDirection] with [sizeAxis]
+  ///and there is a conflict between them,
+  ///the priority will be for [sizeAxis]
+  ///for example: if you passed [Axis.vertical] and [SizeDirection.left]
+  ///the [SizeDirection.left] will be ignored
+  ///and the route will start from center and increase vertically
   static Future<T?> to<T extends Object?>(
     Widget page, {
     RouteSettings? settings,
@@ -24,6 +33,7 @@ class GoSize {
     bool fullscreenDialog = false,
     bool allowSnapshotting = true,
     SizeDirection sizeDirection = SizeDirection.center,
+    Axis sizeAxis = Axis.vertical,
     Curve curve = Curves.linear,
   }) async {
     return Go.navigatorKey.currentState?.push<T>(
@@ -42,6 +52,7 @@ class GoSize {
         transitionsBuilder: (context, animation, secondaryAnimation, child) =>
             _sizeTransitionBuilder(
           sizeDirection,
+          sizeAxis,
           animation,
           curve,
           child,
@@ -52,7 +63,14 @@ class GoSize {
 
   ///This is simple navigation all you have to do
   ///just pass your [widget] to go and it will
-  ///remove previous route from the tree
+  ///remove previous route from the tree.
+  ///
+  ///If you use [sizeDirection] with [sizeAxis]
+  ///and there is a conflict between them,
+  ///the priority will be for [sizeAxis]
+  ///for example: if you passed [Axis.vertical] and [SizeDirection.left]
+  ///the [SizeDirection.left] will be ignored
+  ///and the route will start from center and increase vertically
   static Future<T?> toReplace<T extends Object?, TO extends Object?>(
     Widget page, {
     RouteSettings? settings,
@@ -66,6 +84,7 @@ class GoSize {
     bool fullscreenDialog = false,
     bool allowSnapshotting = true,
     SizeDirection sizeDirection = SizeDirection.center,
+    Axis sizeAxis = Axis.vertical,
     Curve curve = Curves.linear,
   }) async {
     return Go.navigatorKey.currentState?.pushReplacement<T, TO>(
@@ -84,6 +103,7 @@ class GoSize {
         transitionsBuilder: (context, animation, secondaryAnimation, child) =>
             _sizeTransitionBuilder(
           sizeDirection,
+          sizeAxis,
           animation,
           curve,
           child,
@@ -94,7 +114,15 @@ class GoSize {
 
   ///This is simple navigation all you have to do
   ///just pass your [widget] to go and it will
-  ///remove all routes from the tree
+  ///remove all routes from the tree.
+  ///
+  ///
+  ///If you use [sizeDirection] with [sizeAxis]
+  ///and there is a conflict between them,
+  ///the priority will be for [sizeAxis]
+  ///for example: if you passed [Axis.vertical] and [SizeDirection.left]
+  ///the [SizeDirection.left] will be ignored
+  ///and the route will start from center and increase vertically
   static Future<T?> toRemoveUntil<T extends Object?>(
     Widget page, {
     RouteSettings? settings,
@@ -108,6 +136,7 @@ class GoSize {
     bool fullscreenDialog = false,
     bool allowSnapshotting = true,
     SizeDirection sizeDirection = SizeDirection.center,
+    Axis sizeAxis = Axis.vertical,
     Curve curve = Curves.linear,
     bool Function(Route<dynamic>)? predicate,
   }) async {
@@ -129,6 +158,7 @@ class GoSize {
         transitionsBuilder: (context, animation, secondaryAnimation, child) =>
             _sizeTransitionBuilder(
           sizeDirection,
+          sizeAxis,
           animation,
           curve,
           child,
@@ -149,6 +179,7 @@ class GoSize {
 
 Widget _sizeTransitionBuilder(
   SizeDirection sizeDirection,
+  Axis sizeAxis,
   Animation<double> animation,
   Curve curve,
   Widget child,
@@ -175,12 +206,19 @@ Widget _sizeTransitionBuilder(
     case SizeDirection.bottom:
       alignment = Alignment.bottomCenter;
       break;
+    case SizeDirection.right:
+      alignment = Alignment.centerRight;
+      break;
+    case SizeDirection.left:
+      alignment = Alignment.centerLeft;
+      break;
   }
 
   return Align(
     alignment: alignment,
     child: SizeTransition(
       sizeFactor: tween.animate(curvedAnimation),
+      axis: sizeAxis,
       child: child,
     ),
   );

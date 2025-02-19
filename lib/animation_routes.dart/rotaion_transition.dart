@@ -16,6 +16,7 @@ class GoRotation {
     bool fullscreenDialog = false,
     bool allowSnapshotting = true,
     double numberOfTurns = 1,
+    Alignment alignment = Alignment.center,
     Curve curve = Curves.linear,
   }) async {
     return Go.navigatorKey.currentState?.push<T>(
@@ -34,6 +35,7 @@ class GoRotation {
         transitionsBuilder: (context, animation, secondaryAnimation, child) =>
             _rotationTransitionBuilder(
           numberOfTurns,
+          alignment,
           animation,
           curve,
           child,
@@ -58,6 +60,7 @@ class GoRotation {
     bool fullscreenDialog = false,
     bool allowSnapshotting = true,
     double numberOfTurns = 1,
+    Alignment alignment = Alignment.center,
     Curve curve = Curves.linear,
   }) async {
     return Go.navigatorKey.currentState?.pushReplacement<T, TO>(
@@ -76,6 +79,7 @@ class GoRotation {
         transitionsBuilder: (context, animation, secondaryAnimation, child) =>
             _rotationTransitionBuilder(
           numberOfTurns,
+          alignment,
           animation,
           curve,
           child,
@@ -100,6 +104,7 @@ class GoRotation {
     bool fullscreenDialog = false,
     bool allowSnapshotting = true,
     double numberOfTurns = 1,
+    Alignment alignment = Alignment.center,
     Curve curve = Curves.linear,
     bool Function(Route<dynamic>)? predicate,
   }) async {
@@ -121,6 +126,7 @@ class GoRotation {
         transitionsBuilder: (context, animation, secondaryAnimation, child) =>
             _rotationTransitionBuilder(
           numberOfTurns,
+          alignment,
           animation,
           curve,
           child,
@@ -141,6 +147,7 @@ class GoRotation {
 
 Widget _rotationTransitionBuilder(
   double numberOfTurns,
+  Alignment alignment,
   Animation<double> animation,
   Curve curve,
   Widget child,
@@ -157,6 +164,7 @@ Widget _rotationTransitionBuilder(
 
   return RotationTransition(
     turns: tween.animate(curvedAnimation),
+    alignment: alignment,
     child: child,
   );
 }

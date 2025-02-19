@@ -37,6 +37,22 @@ class HomePage extends StatelessWidget {
 
   void navigation() {
     Go.to(SecondPage());
+
+    GoRotation.to(
+      SecondPage(),
+      alignment: Alignment.bottomCenter,
+    );
+
+    GoScale.to(
+      SecondPage(),
+      alignment: Alignment.topRight,
+    );
+
+    GoSize.to(
+      SecondPage(),
+      sizeDirection: SizeDirection.bottom,
+      sizeAxis: Axis.vertical,
+    );
   }
 }
 

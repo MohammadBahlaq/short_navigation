@@ -16,6 +16,7 @@ class GoScale {
     bool fullscreenDialog = false,
     bool allowSnapshotting = true,
     Curve curve = Curves.linear,
+    Alignment alignment = Alignment.center,
   }) async {
     return Go.navigatorKey.currentState?.push<T>(
       PageRouteBuilder(
@@ -33,6 +34,7 @@ class GoScale {
         transitionsBuilder: (context, animation, secondaryAnimation, child) =>
             _scaleTransitionBuilder(
           animation,
+          alignment,
           curve,
           child,
         ),
@@ -56,6 +58,7 @@ class GoScale {
     bool fullscreenDialog = false,
     bool allowSnapshotting = true,
     Curve curve = Curves.linear,
+    Alignment alignment = Alignment.center,
   }) async {
     return Go.navigatorKey.currentState?.pushReplacement<T, TO>(
       PageRouteBuilder(
@@ -73,6 +76,7 @@ class GoScale {
         transitionsBuilder: (context, animation, secondaryAnimation, child) =>
             _scaleTransitionBuilder(
           animation,
+          alignment,
           curve,
           child,
         ),
@@ -96,6 +100,7 @@ class GoScale {
     bool fullscreenDialog = false,
     bool allowSnapshotting = true,
     Curve curve = Curves.linear,
+    Alignment alignment = Alignment.center,
     bool Function(Route<dynamic>)? predicate,
   }) async {
     predicate ??= (route) => false;
@@ -116,6 +121,7 @@ class GoScale {
         transitionsBuilder: (context, animation, secondaryAnimation, child) =>
             _scaleTransitionBuilder(
           animation,
+          alignment,
           curve,
           child,
         ),
@@ -135,6 +141,7 @@ class GoScale {
 
 Widget _scaleTransitionBuilder(
   Animation<double> animation,
+  Alignment alignment,
   Curve curve,
   Widget child,
 ) {
@@ -150,6 +157,7 @@ Widget _scaleTransitionBuilder(
 
   return ScaleTransition(
     scale: tween.animate(curvedAnimation),
+    alignment: alignment,
     child: child,
   );
 }
