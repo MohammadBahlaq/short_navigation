@@ -173,4 +173,16 @@ abstract class Go {
   static void back<T extends Object?>([T? result]) async {
     return navigatorKey.currentState?.pop(result);
   }
+
+  /// Calls [back] repeatedly until the predicate returns true.
+  /// Typical usage is as follows:
+  ///
+  /// ```dart
+  /// void _doLogout() {
+  ///   navigator.backUntil(ModalRoute.withName('/login'));
+  /// }
+  /// ```
+  static void backUntil(RoutePredicate predicate) async {
+    return navigatorKey.currentState?.popUntil(predicate);
+  }
 }

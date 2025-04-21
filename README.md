@@ -50,7 +50,7 @@ Explaining of how to use this package
   ///This is simple navigation all you have to do
   ///just pass your [widget] to go and it will
   ///remove all routes from the tree
-  Go.toRemoveAll(HomePage());
+  Go.toRemoveUntil(HomePage());
 
   ///If you want to pop sothing before
   ///pushing to another widget you could use it,
@@ -101,7 +101,7 @@ Explaining of how to use this package
   ///This is simple navigation all you have to do
   ///just pass your [widget] to go and it will
   ///remove all routes from the tree
-  GoDialogRoute.toRemoveAll(HomePage());
+  GoDialogRoute.toRemoveUntil(HomePage());
 
   ///If you want to pop sothing before
   ///pushing to another widget you could use it,
@@ -126,7 +126,7 @@ Explaining of how to use this package
   ///This is simple navigation all you have to do
   ///just pass your [widget] to go and it will
   ///remove all routes from the tree
-  GoRawDialogRoute.toRemoveAll(HomePage());
+  GoRawDialogRoute.toRemoveUntil(HomePage());
 
   ///If you want to pop sothing before
   ///pushing to another widget you could use it,
@@ -151,7 +151,7 @@ Explaining of how to use this package
   ///This is simple navigation all you have to do
   ///just pass your [widget] to go and it will
   ///remove all routes from the tree
-  GoPageRoute.toRemoveAll(HomePage());
+  GoPageRoute.toRemoveUntil(HomePage());
 
   ///If you want to pop sothing before
   ///pushing to another widget you could use it,
@@ -176,7 +176,7 @@ Explaining of how to use this package
   ///This is simple navigation all you have to do
   ///just pass your [widget] to go and it will
   ///remove all routes from the tree
-  GoBottomSheetRoute.toRemoveAll(HomePage());
+  GoBottomSheetRoute.toRemoveUntil(HomePage());
 
   ///If you want to pop sothing before
   ///pushing to another widget you could use it,
