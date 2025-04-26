@@ -183,6 +183,11 @@ abstract class Go {
   /// }
   /// ```
   static void backUntil(RoutePredicate predicate) async {
-    return navigatorKey.currentState?.popUntil(predicate);
+    navigatorKey.currentState?.popUntil(predicate);
+  }
+
+  ///Returns true if you can pop without any problems, otherwise it will reurn false
+  static bool? canBack() {
+    return navigatorKey.currentState?.canPop();
   }
 }

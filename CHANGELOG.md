@@ -1,4 +1,4 @@
-## 2.2.1
+## 2.2.2
 
 * Support Animations [SlideTransition, FadeTransition, ScaleTransition, RotationTransition,     SizeTransition]
 * Support new Routes [DialogRoute, RawDialogRoute, PageRouteBuilder, ModalBottomSheetRoute]
@@ -10,3 +10,6 @@
 * Editing three animation routes classes [GoRotation, GoScale, GoSize]
 * We added an alignment parameter to [GoRotation, GoScale]
 * and added another two [SizeDirection] in GoSize (right & left)
+
+* Version 2.2.2
+* Add canBack() function

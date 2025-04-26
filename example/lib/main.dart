@@ -65,7 +65,11 @@ class SecondPage extends StatelessWidget {
       backgroundColor: Colors.green,
       body: Center(
         child: ElevatedButton(
-          onPressed: () => Go.back(),
+          onPressed: () {
+            if (Go.canBack() ?? false) {
+              Go.back();
+            }
+          },
           child: const Text("Back to First Page"),
         ),
       ),
