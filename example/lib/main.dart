@@ -38,6 +38,10 @@ class HomePage extends StatelessWidget {
   void navigation() {
     Go.to(SecondPage());
 
+    GoFade.to(SecondPage());
+
+    GoSlide.to(SecondPage(), slideDirection: AxisDirection.down);
+
     GoRotation.to(
       SecondPage(),
       alignment: Alignment.bottomCenter,

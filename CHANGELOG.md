@@ -1,4 +1,4 @@
-## 2.2.2
+## 2.2.3
 
 * Support Animations [SlideTransition, FadeTransition, ScaleTransition, RotationTransition,     SizeTransition]
 * Support new Routes [DialogRoute, RawDialogRoute, PageRouteBuilder, ModalBottomSheetRoute]
@@ -13,3 +13,7 @@
 
 * Version 2.2.2
 * Add canBack() function
+
+* Version 2.2.3
+* Add default value for backUntil function
+* We made it to back to the first route by default

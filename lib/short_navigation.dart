@@ -182,7 +182,9 @@ abstract class Go {
   ///   navigator.backUntil(ModalRoute.withName('/login'));
   /// }
   /// ```
-  static void backUntil(RoutePredicate predicate) async {
+  static void backUntil({RoutePredicate? predicate}) async {
+    predicate ??= (route) => route.isFirst;
+
     navigatorKey.currentState?.popUntil(predicate);
   }
 
