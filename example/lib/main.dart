@@ -36,27 +36,24 @@ class HomePage extends StatelessWidget {
   }
 
   void navigation() {
-    Go.to(SecondPage());
+    // Go.to(SecondPage());
 
-    GoFade.to(SecondPage());
+    // GoFade.to(SecondPage(), transitionDuration: Duration(milliseconds: 600));
 
-    GoSlide.to(SecondPage(), slideDirection: AxisDirection.down);
+    // GoSlide.to(SecondPage(), slideDirection: AxisDirection.left);
 
-    GoRotation.to(
-      SecondPage(),
-      alignment: Alignment.bottomCenter,
-    );
+    // GoRotation.to(SecondPage());
 
-    GoScale.to(
-      SecondPage(),
-      alignment: Alignment.topRight,
-    );
+    // GoScale.to(
+    //   SecondPage(),
+    //   alignment: Alignment.center,
+    // );
 
-    GoSize.to(
-      SecondPage(),
-      sizeDirection: SizeDirection.bottom,
-      sizeAxis: Axis.vertical,
-    );
+    // GoSize.to(
+    //   SecondPage(),
+    //   sizeDirection: SizeDirection.center,
+    //   sizeAxis: Axis.horizontal,
+    // );
   }
 }
 
