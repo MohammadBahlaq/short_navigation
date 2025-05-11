@@ -57,6 +57,15 @@ Explaining of how to use this package
   ///just pass your [widget] to go
   Go.backAndTo(HomePage());
 ```
+## You can check these GIF examples from the Example section
+<img src="https://github.com/user-attachments/assets/1a334193-27c9-4a88-a72c-a2369c0d8945" width="200" height="350" />
+<img src="https://github.com/user-attachments/assets/8254ae11-cf51-4dbe-951d-4cad6adffc79" width="200" height="350" />
+<img src="https://github.com/user-attachments/assets/cfceae55-49c1-49e7-a127-6e56b716f033" width="200" height="350" />
+<img src="https://github.com/user-attachments/assets/c2381a5d-7c29-42be-8fc4-edeebbd51700" width="200" height="350" />
+<img src="https://github.com/user-attachments/assets/b41082f4-8687-4677-8177-f5fd836d4296" width="200" height="350" />
+<img src="https://github.com/user-attachments/assets/a6acb68f-d956-47bc-b5fd-f623e0e1c6fa" width="200" height="350" />
+<img src="https://github.com/user-attachments/assets/47a44c0e-195d-42e7-a33a-c07cdd1d1009" width="200" height="350" />
+<img src="https://github.com/user-attachments/assets/e6acd407-34c8-4beb-8289-7080e3d2a876" width="200" height="350" />
 
 ## Navigation with animations [Slide, Scale, Rotation, Size, Fade]
 ```dart
