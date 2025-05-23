@@ -101,7 +101,7 @@ class GoSlide {
     bool allowSnapshotting = true,
     Curve curve = Curves.linear,
     AxisDirection slideDirection = AxisDirection.left,
-    bool Function(Route<dynamic>)? predicate,
+    bool Function(Route<dynamic> route)? predicate,
   }) async {
     predicate ??= (route) => false;
 

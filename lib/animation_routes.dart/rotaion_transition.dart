@@ -106,7 +106,7 @@ class GoRotation {
     double numberOfTurns = 1,
     Alignment alignment = Alignment.center,
     Curve curve = Curves.linear,
-    bool Function(Route<dynamic>)? predicate,
+    bool Function(Route<dynamic> route)? predicate,
   }) async {
     predicate ??= (route) => false;
 

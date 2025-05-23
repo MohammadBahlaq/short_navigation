@@ -1,4 +1,4 @@
-## 2.2.4
+## 2.2.5
 
 * Support Animations [SlideTransition, FadeTransition, ScaleTransition, RotationTransition,     SizeTransition]
 * Support new Routes [DialogRoute, RawDialogRoute, PageRouteBuilder, ModalBottomSheetRoute]

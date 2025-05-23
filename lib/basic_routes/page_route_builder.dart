@@ -95,7 +95,7 @@ abstract class GoPageRoute {
     Widget Function(BuildContext context, Animation<double> animation,
             Animation<double> secondaryAnimation, Widget child)
         transitionsBuilder = _defaultTransitionsBuilder,
-    bool Function(Route<dynamic>)? predicate,
+    bool Function(Route<dynamic> route)? predicate,
   }) async {
     predicate ??= (route) => false;
 

@@ -73,7 +73,7 @@ abstract class GoDialogRoute {
     RouteSettings? settings,
     Offset? anchorPoint,
     TraversalEdgeBehavior? traversalEdgeBehavior,
-    bool Function(Route<dynamic>)? predicate,
+    bool Function(Route<dynamic> route)? predicate,
   }) async {
     predicate ??= (route) => false;
 

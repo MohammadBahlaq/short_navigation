@@ -128,7 +128,7 @@ abstract class GoBottomSheetRoute {
     bool? showDragHandle,
     AnimationController? transitionAnimationController,
     bool useSafeArea = false,
-    bool Function(Route<dynamic>)? predicate,
+    bool Function(Route<dynamic> route)? predicate,
   }) async {
     predicate ??= (route) => false;
 

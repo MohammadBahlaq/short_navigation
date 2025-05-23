@@ -96,7 +96,7 @@ class GoFade {
     bool fullscreenDialog = false,
     bool allowSnapshotting = true,
     Curve curve = Curves.linear,
-    bool Function(Route<dynamic>)? predicate,
+    bool Function(Route<dynamic> route)? predicate,
   }) async {
     predicate ??= (route) => false;
 

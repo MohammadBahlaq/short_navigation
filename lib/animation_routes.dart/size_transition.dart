@@ -138,7 +138,7 @@ class GoSize {
     SizeDirection sizeDirection = SizeDirection.center,
     Axis sizeAxis = Axis.vertical,
     Curve curve = Curves.linear,
-    bool Function(Route<dynamic>)? predicate,
+    bool Function(Route<dynamic> route)? predicate,
   }) async {
     predicate ??= (route) => false;
 

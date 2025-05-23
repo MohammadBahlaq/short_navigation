@@ -77,7 +77,7 @@ abstract class Go {
     bool fullscreenDialog = false,
     bool maintainState = true,
     RouteSettings? settings,
-    bool Function(Route<dynamic>)? predicate,
+    bool Function(Route<dynamic> route)? predicate,
   }) async {
     predicate ??= (route) => false;
 
@@ -130,7 +130,7 @@ abstract class Go {
   static Future<T?> toNameRemoveAll<T extends Object?>(
     String page, {
     Object? arguments,
-    bool Function(Route<dynamic>)? predicate,
+    bool Function(Route<dynamic> route)? predicate,
   }) async {
     predicate ??= (route) => false;
 
