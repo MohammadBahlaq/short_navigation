@@ -32,16 +32,21 @@ abstract class Go {
     bool maintainState = true,
     RouteSettings? settings,
   }) async {
-    return navigatorKey.currentState?.push<T>(
-      MaterialPageRoute(
-        builder: (context) => page,
-        allowSnapshotting: allowSnapshotting,
-        barrierDismissible: barrierDismissible,
-        fullscreenDialog: fullscreenDialog,
-        maintainState: maintainState,
-        settings: settings,
-      ),
-    );
+    try {
+      return navigatorKey.currentState!.push<T>(
+        MaterialPageRoute(
+          builder: (context) => page,
+          allowSnapshotting: allowSnapshotting,
+          barrierDismissible: barrierDismissible,
+          fullscreenDialog: fullscreenDialog,
+          maintainState: maintainState,
+          settings: settings,
+        ),
+      );
+    } catch (e) {
+      _handleNavigationError(e);
+    }
+    return null;
   }
 
   ///This is simple navigation all you have to do
@@ -55,16 +60,22 @@ abstract class Go {
     bool maintainState = true,
     RouteSettings? settings,
   }) async {
-    return navigatorKey.currentState?.pushReplacement<T, TO>(
-      MaterialPageRoute(
-        builder: (context) => page,
-        allowSnapshotting: allowSnapshotting,
-        barrierDismissible: barrierDismissible,
-        fullscreenDialog: fullscreenDialog,
-        maintainState: maintainState,
-        settings: settings,
-      ),
-    );
+    try {
+      return navigatorKey.currentState!.pushReplacement<T, TO>(
+        MaterialPageRoute(
+          builder: (context) => page,
+          allowSnapshotting: allowSnapshotting,
+          barrierDismissible: barrierDismissible,
+          fullscreenDialog: fullscreenDialog,
+          maintainState: maintainState,
+          settings: settings,
+        ),
+      );
+    } catch (e) {
+      _handleNavigationError(e);
+    }
+
+    return null;
   }
 
   ///This is simple navigation all you have to do
@@ -81,35 +92,49 @@ abstract class Go {
   }) async {
     predicate ??= (route) => false;
 
-    return navigatorKey.currentState?.pushAndRemoveUntil<T>(
-      MaterialPageRoute(
-        builder: (context) => page,
-        allowSnapshotting: allowSnapshotting,
-        barrierDismissible: barrierDismissible,
-        fullscreenDialog: fullscreenDialog,
-        maintainState: maintainState,
-        settings: settings,
-      ),
-      predicate,
-    );
+    try {
+      return navigatorKey.currentState!.pushAndRemoveUntil<T>(
+        MaterialPageRoute(
+          builder: (context) => page,
+          allowSnapshotting: allowSnapshotting,
+          barrierDismissible: barrierDismissible,
+          fullscreenDialog: fullscreenDialog,
+          maintainState: maintainState,
+          settings: settings,
+        ),
+        predicate,
+      );
+    } catch (e) {
+      _handleNavigationError(e);
+    }
+    return null;
   }
 
   ///If you want to pop sothing before
   ///pushing to another widget you could use it,
   ///just pass your [widget] to go
   static Future<void> backAndTo(Widget page) async {
-    back();
-    to(page);
+    try {
+      back();
+      to(page);
+    } catch (e) {
+      _handleNavigationError(e);
+    }
   }
 
   ///This is simple navigation all you have to do
   ///just passing your route [name] to go
   static Future<T?> toName<T extends Object?>(String page,
       {Object? arguments}) async {
-    return navigatorKey.currentState?.pushNamed<T>(
-      page,
-      arguments: arguments,
-    );
+    try {
+      return navigatorKey.currentState!.pushNamed<T>(
+        page,
+        arguments: arguments,
+      );
+    } catch (e) {
+      _handleNavigationError(e);
+    }
+    return null;
   }
 
   ///This is simple navigation all you have to do
@@ -118,10 +143,15 @@ abstract class Go {
   static Future<T?> toReplaceName<T extends Object?, TO extends Object?>(
       String page,
       {Object? arguments}) async {
-    return navigatorKey.currentState?.pushReplacementNamed<T, TO>(
-      page,
-      arguments: arguments,
-    );
+    try {
+      return navigatorKey.currentState!.pushReplacementNamed<T, TO>(
+        page,
+        arguments: arguments,
+      );
+    } catch (e) {
+      _handleNavigationError(e);
+    }
+    return null;
   }
 
   ///This is simple navigation all you have to do
@@ -134,11 +164,16 @@ abstract class Go {
   }) async {
     predicate ??= (route) => false;
 
-    return navigatorKey.currentState?.pushNamedAndRemoveUntil<T>(
-      page,
-      predicate,
-      arguments: arguments,
-    );
+    try {
+      return navigatorKey.currentState!.pushNamedAndRemoveUntil<T>(
+        page,
+        predicate,
+        arguments: arguments,
+      );
+    } catch (e) {
+      _handleNavigationError(e);
+    }
+    return null;
   }
 
   ///If you want to pop sothing before
@@ -148,11 +183,16 @@ abstract class Go {
       String page,
       {Object? arguments,
       TO? result}) async {
-    return navigatorKey.currentState?.popAndPushNamed<T, TO>(
-      page,
-      arguments: arguments,
-      result: result,
-    );
+    try {
+      return navigatorKey.currentState!.popAndPushNamed<T, TO>(
+        page,
+        arguments: arguments,
+        result: result,
+      );
+    } catch (e) {
+      _handleNavigationError(e);
+    }
+    return null;
   }
 
   ///If you need to back to previous page you can use this function,
@@ -161,17 +201,21 @@ abstract class Go {
   ///using [numOfBacks].
   ///There is no need to pass [numOfBacks] if you just want to pop one time.
   static void multiBack([int? numOfBacks]) async {
-    if (numOfBacks == null) {
-      navigatorKey.currentState?.pop();
-    } else {
-      for (var i = 0; i < numOfBacks; i++) {
-        navigatorKey.currentState?.pop();
+    try {
+      if (numOfBacks == null) {
+        navigatorKey.currentState!.pop();
+      } else {
+        for (var i = 0; i < numOfBacks; i++) {
+          navigatorKey.currentState!.pop();
+        }
       }
+    } catch (e) {
+      _handleNavigationError(e);
     }
   }
 
   static void back<T extends Object?>([T? result]) async {
-    return navigatorKey.currentState?.pop(result);
+    return navigatorKey.currentState!.pop(result);
   }
 
   /// Calls [back] repeatedly until the predicate returns true.
@@ -183,13 +227,39 @@ abstract class Go {
   /// }
   /// ```
   static void backUntil({RoutePredicate? predicate}) async {
-    predicate ??= (route) => route.isFirst;
+    try {
+      predicate ??= (route) => route.isFirst;
 
-    navigatorKey.currentState?.popUntil(predicate);
+      navigatorKey.currentState!.popUntil(predicate);
+    } catch (e) {
+      _handleNavigationError(e);
+    }
   }
 
   ///Returns true if you can pop without any problems, otherwise it will reurn false
   static bool? canBack() {
-    return navigatorKey.currentState?.canPop();
+    try {
+      return navigatorKey.currentState!.canPop();
+    } catch (e) {
+      _handleNavigationError(e);
+    }
+    return null;
+  }
+}
+
+_handleNavigationError(e) {
+  if (e.toString().contains("Unexpected null value")) {
+    debugPrint(
+      "${'\x1B[31m'}[short_navigation]: Please make sure that you passed Go.navigatorKey to navigatorKey in MaterialApp like this `navigatorKey: Go.navigatorKey`",
+    );
+  } else {
+    GoMessenger.dialog(AlertDialog(
+      alignment: Alignment.center,
+      content: Text(e.toString()),
+    ));
+
+    debugPrint(
+      "${'\x1B[31m'}[short_navigation]: ${e.toString()}",
+    );
   }
 }

@@ -22,22 +22,27 @@ abstract class GoPageRoute {
       Widget child,
     ) transitionsBuilder = _defaultTransitionsBuilder,
   }) async {
-    return Go.navigatorKey.currentState?.push<T>(
-      PageRouteBuilder(
-        settings: settings,
-        pageBuilder: (context, animation, secondaryAnimation) => page,
-        transitionDuration: transitionDuration,
-        reverseTransitionDuration: reverseTransitionDuration,
-        opaque: opaque,
-        barrierDismissible: barrierDismissible,
-        barrierColor: barrierColor,
-        barrierLabel: barrierLabel,
-        maintainState: maintainState,
-        fullscreenDialog: fullscreenDialog,
-        allowSnapshotting: allowSnapshotting,
-        transitionsBuilder: transitionsBuilder,
-      ),
-    );
+    try {
+      return Go.navigatorKey.currentState!.push<T>(
+        PageRouteBuilder(
+          settings: settings,
+          pageBuilder: (context, animation, secondaryAnimation) => page,
+          transitionDuration: transitionDuration,
+          reverseTransitionDuration: reverseTransitionDuration,
+          opaque: opaque,
+          barrierDismissible: barrierDismissible,
+          barrierColor: barrierColor,
+          barrierLabel: barrierLabel,
+          maintainState: maintainState,
+          fullscreenDialog: fullscreenDialog,
+          allowSnapshotting: allowSnapshotting,
+          transitionsBuilder: transitionsBuilder,
+        ),
+      );
+    } catch (e) {
+      _handleNavigationError(e);
+    }
+    return null;
   }
 
   ///This is simple navigation all you have to do
@@ -59,22 +64,27 @@ abstract class GoPageRoute {
             Animation<double> secondaryAnimation, Widget child)
         transitionsBuilder = _defaultTransitionsBuilder,
   }) async {
-    return Go.navigatorKey.currentState?.pushReplacement<T, TO>(
-      PageRouteBuilder(
-        settings: settings,
-        pageBuilder: (context, animation, secondaryAnimation) => page,
-        transitionDuration: transitionDuration,
-        reverseTransitionDuration: reverseTransitionDuration,
-        opaque: opaque,
-        barrierDismissible: barrierDismissible,
-        barrierColor: barrierColor,
-        barrierLabel: barrierLabel,
-        maintainState: maintainState,
-        fullscreenDialog: fullscreenDialog,
-        allowSnapshotting: allowSnapshotting,
-        transitionsBuilder: transitionsBuilder,
-      ),
-    );
+    try {
+      return Go.navigatorKey.currentState!.pushReplacement<T, TO>(
+        PageRouteBuilder(
+          settings: settings,
+          pageBuilder: (context, animation, secondaryAnimation) => page,
+          transitionDuration: transitionDuration,
+          reverseTransitionDuration: reverseTransitionDuration,
+          opaque: opaque,
+          barrierDismissible: barrierDismissible,
+          barrierColor: barrierColor,
+          barrierLabel: barrierLabel,
+          maintainState: maintainState,
+          fullscreenDialog: fullscreenDialog,
+          allowSnapshotting: allowSnapshotting,
+          transitionsBuilder: transitionsBuilder,
+        ),
+      );
+    } catch (e) {
+      _handleNavigationError(e);
+    }
+    return null;
   }
 
   ///This is simple navigation all you have to do
@@ -99,37 +109,46 @@ abstract class GoPageRoute {
   }) async {
     predicate ??= (route) => false;
 
-    return Go.navigatorKey.currentState?.pushAndRemoveUntil<T>(
-      PageRouteBuilder(
-        settings: settings,
-        pageBuilder: (context, animation, secondaryAnimation) => page,
-        transitionDuration: transitionDuration,
-        reverseTransitionDuration: reverseTransitionDuration,
-        opaque: opaque,
-        barrierDismissible: barrierDismissible,
-        barrierColor: barrierColor,
-        barrierLabel: barrierLabel,
-        maintainState: maintainState,
-        fullscreenDialog: fullscreenDialog,
-        allowSnapshotting: allowSnapshotting,
-        transitionsBuilder: transitionsBuilder,
-      ),
-      predicate,
-    );
+    try {
+      return Go.navigatorKey.currentState!.pushAndRemoveUntil<T>(
+        PageRouteBuilder(
+          settings: settings,
+          pageBuilder: (context, animation, secondaryAnimation) => page,
+          transitionDuration: transitionDuration,
+          reverseTransitionDuration: reverseTransitionDuration,
+          opaque: opaque,
+          barrierDismissible: barrierDismissible,
+          barrierColor: barrierColor,
+          barrierLabel: barrierLabel,
+          maintainState: maintainState,
+          fullscreenDialog: fullscreenDialog,
+          allowSnapshotting: allowSnapshotting,
+          transitionsBuilder: transitionsBuilder,
+        ),
+        predicate,
+      );
+    } catch (e) {
+      _handleNavigationError(e);
+    }
+    return null;
   }
 
   ///If you want to pop sothing before
   ///pushing to another widget you could use it,
   ///just pass your [widget] to go
   static Future<void> backAndTo(Widget page) async {
-    Go.back();
-    to(page);
+    try {
+      Go.back();
+      to(page);
+    } catch (e) {
+      _handleNavigationError(e);
+    }
   }
-}
 
-Widget _defaultTransitionsBuilder(
-        BuildContext context,
-        Animation<double> animation,
-        Animation<double> secondaryAnimation,
-        Widget child) =>
-    child;
+  static Widget _defaultTransitionsBuilder(
+          BuildContext context,
+          Animation<double> animation,
+          Animation<double> secondaryAnimation,
+          Widget child) =>
+      child;
+}

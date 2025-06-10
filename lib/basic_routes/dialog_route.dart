@@ -14,20 +14,25 @@ abstract class GoDialogRoute {
     Offset? anchorPoint,
     TraversalEdgeBehavior? traversalEdgeBehavior,
   }) async {
-    return Go.navigatorKey.currentState?.push<T>(
-      DialogRoute(
-        context: Go.context,
-        builder: (context) => page,
-        themes: themes,
-        barrierColor: barrierColor,
-        barrierDismissible: barrierDismissible,
-        barrierLabel: barrierLabel,
-        useSafeArea: useSafeArea,
-        settings: settings,
-        anchorPoint: anchorPoint,
-        traversalEdgeBehavior: traversalEdgeBehavior,
-      ),
-    );
+    try {
+      return Go.navigatorKey.currentState!.push<T>(
+        DialogRoute(
+          context: Go.context,
+          builder: (context) => page,
+          themes: themes,
+          barrierColor: barrierColor,
+          barrierDismissible: barrierDismissible,
+          barrierLabel: barrierLabel,
+          useSafeArea: useSafeArea,
+          settings: settings,
+          anchorPoint: anchorPoint,
+          traversalEdgeBehavior: traversalEdgeBehavior,
+        ),
+      );
+    } catch (e) {
+      _handleNavigationError(e);
+    }
+    return null;
   }
 
   ///This is simple navigation all you have to do
@@ -44,20 +49,25 @@ abstract class GoDialogRoute {
     Offset? anchorPoint,
     TraversalEdgeBehavior? traversalEdgeBehavior,
   }) async {
-    return Go.navigatorKey.currentState?.pushReplacement<T, TO>(
-      DialogRoute(
-        context: Go.context,
-        builder: (context) => page,
-        themes: themes,
-        barrierColor: barrierColor,
-        barrierDismissible: barrierDismissible,
-        barrierLabel: barrierLabel,
-        useSafeArea: useSafeArea,
-        settings: settings,
-        anchorPoint: anchorPoint,
-        traversalEdgeBehavior: traversalEdgeBehavior,
-      ),
-    );
+    try {
+      return Go.navigatorKey.currentState!.pushReplacement<T, TO>(
+        DialogRoute(
+          context: Go.context,
+          builder: (context) => page,
+          themes: themes,
+          barrierColor: barrierColor,
+          barrierDismissible: barrierDismissible,
+          barrierLabel: barrierLabel,
+          useSafeArea: useSafeArea,
+          settings: settings,
+          anchorPoint: anchorPoint,
+          traversalEdgeBehavior: traversalEdgeBehavior,
+        ),
+      );
+    } catch (e) {
+      _handleNavigationError(e);
+    }
+    return null;
   }
 
   ///This is simple navigation all you have to do
@@ -77,28 +87,37 @@ abstract class GoDialogRoute {
   }) async {
     predicate ??= (route) => false;
 
-    return Go.navigatorKey.currentState?.pushAndRemoveUntil<T>(
-      DialogRoute(
-        context: Go.context,
-        builder: (context) => page,
-        themes: themes,
-        barrierColor: barrierColor,
-        barrierDismissible: barrierDismissible,
-        barrierLabel: barrierLabel,
-        useSafeArea: useSafeArea,
-        settings: settings,
-        anchorPoint: anchorPoint,
-        traversalEdgeBehavior: traversalEdgeBehavior,
-      ),
-      predicate,
-    );
+    try {
+      return Go.navigatorKey.currentState!.pushAndRemoveUntil<T>(
+        DialogRoute(
+          context: Go.context,
+          builder: (context) => page,
+          themes: themes,
+          barrierColor: barrierColor,
+          barrierDismissible: barrierDismissible,
+          barrierLabel: barrierLabel,
+          useSafeArea: useSafeArea,
+          settings: settings,
+          anchorPoint: anchorPoint,
+          traversalEdgeBehavior: traversalEdgeBehavior,
+        ),
+        predicate,
+      );
+    } catch (e) {
+      _handleNavigationError(e);
+    }
+    return null;
   }
 
   ///If you want to pop sothing before
   ///pushing to another widget you could use it,
   ///just pass your [widget] to go
   static Future<void> backAndTo(Widget page) async {
-    Go.back();
-    to(page);
+    try {
+      Go.back();
+      to(page);
+    } catch (e) {
+      _handleNavigationError(e);
+    }
   }
 }

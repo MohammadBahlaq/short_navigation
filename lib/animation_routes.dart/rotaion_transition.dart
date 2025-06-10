@@ -19,29 +19,34 @@ class GoRotation {
     Alignment alignment = Alignment.center,
     Curve curve = Curves.linear,
   }) async {
-    return Go.navigatorKey.currentState?.push<T>(
-      PageRouteBuilder(
-        settings: settings,
-        pageBuilder: (context, animation, secondaryAnimation) => page,
-        transitionDuration: transitionDuration,
-        reverseTransitionDuration: reverseTransitionDuration,
-        opaque: opaque,
-        barrierDismissible: barrierDismissible,
-        barrierColor: barrierColor,
-        barrierLabel: barrierLabel,
-        maintainState: maintainState,
-        fullscreenDialog: fullscreenDialog,
-        allowSnapshotting: allowSnapshotting,
-        transitionsBuilder: (context, animation, secondaryAnimation, child) =>
-            _rotationTransitionBuilder(
-          numberOfTurns,
-          alignment,
-          animation,
-          curve,
-          child,
+    try {
+      return Go.navigatorKey.currentState!.push<T>(
+        PageRouteBuilder(
+          settings: settings,
+          pageBuilder: (context, animation, secondaryAnimation) => page,
+          transitionDuration: transitionDuration,
+          reverseTransitionDuration: reverseTransitionDuration,
+          opaque: opaque,
+          barrierDismissible: barrierDismissible,
+          barrierColor: barrierColor,
+          barrierLabel: barrierLabel,
+          maintainState: maintainState,
+          fullscreenDialog: fullscreenDialog,
+          allowSnapshotting: allowSnapshotting,
+          transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+              _rotationTransitionBuilder(
+            numberOfTurns,
+            alignment,
+            animation,
+            curve,
+            child,
+          ),
         ),
-      ),
-    );
+      );
+    } catch (e) {
+      _handleNavigationError(e);
+    }
+    return null;
   }
 
   ///This is simple navigation all you have to do
@@ -63,29 +68,34 @@ class GoRotation {
     Alignment alignment = Alignment.center,
     Curve curve = Curves.linear,
   }) async {
-    return Go.navigatorKey.currentState?.pushReplacement<T, TO>(
-      PageRouteBuilder(
-        settings: settings,
-        pageBuilder: (context, animation, secondaryAnimation) => page,
-        transitionDuration: transitionDuration,
-        reverseTransitionDuration: reverseTransitionDuration,
-        opaque: opaque,
-        barrierDismissible: barrierDismissible,
-        barrierColor: barrierColor,
-        barrierLabel: barrierLabel,
-        maintainState: maintainState,
-        fullscreenDialog: fullscreenDialog,
-        allowSnapshotting: allowSnapshotting,
-        transitionsBuilder: (context, animation, secondaryAnimation, child) =>
-            _rotationTransitionBuilder(
-          numberOfTurns,
-          alignment,
-          animation,
-          curve,
-          child,
+    try {
+      return Go.navigatorKey.currentState!.pushReplacement<T, TO>(
+        PageRouteBuilder(
+          settings: settings,
+          pageBuilder: (context, animation, secondaryAnimation) => page,
+          transitionDuration: transitionDuration,
+          reverseTransitionDuration: reverseTransitionDuration,
+          opaque: opaque,
+          barrierDismissible: barrierDismissible,
+          barrierColor: barrierColor,
+          barrierLabel: barrierLabel,
+          maintainState: maintainState,
+          fullscreenDialog: fullscreenDialog,
+          allowSnapshotting: allowSnapshotting,
+          transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+              _rotationTransitionBuilder(
+            numberOfTurns,
+            alignment,
+            animation,
+            curve,
+            child,
+          ),
         ),
-      ),
-    );
+      );
+    } catch (e) {
+      _handleNavigationError(e);
+    }
+    return null;
   }
 
   ///This is simple navigation all you have to do
@@ -110,61 +120,70 @@ class GoRotation {
   }) async {
     predicate ??= (route) => false;
 
-    return Go.navigatorKey.currentState?.pushAndRemoveUntil<T>(
-      PageRouteBuilder(
-        settings: settings,
-        pageBuilder: (context, animation, secondaryAnimation) => page,
-        transitionDuration: transitionDuration,
-        reverseTransitionDuration: reverseTransitionDuration,
-        opaque: opaque,
-        barrierDismissible: barrierDismissible,
-        barrierColor: barrierColor,
-        barrierLabel: barrierLabel,
-        maintainState: maintainState,
-        fullscreenDialog: fullscreenDialog,
-        allowSnapshotting: allowSnapshotting,
-        transitionsBuilder: (context, animation, secondaryAnimation, child) =>
-            _rotationTransitionBuilder(
-          numberOfTurns,
-          alignment,
-          animation,
-          curve,
-          child,
+    try {
+      return Go.navigatorKey.currentState!.pushAndRemoveUntil<T>(
+        PageRouteBuilder(
+          settings: settings,
+          pageBuilder: (context, animation, secondaryAnimation) => page,
+          transitionDuration: transitionDuration,
+          reverseTransitionDuration: reverseTransitionDuration,
+          opaque: opaque,
+          barrierDismissible: barrierDismissible,
+          barrierColor: barrierColor,
+          barrierLabel: barrierLabel,
+          maintainState: maintainState,
+          fullscreenDialog: fullscreenDialog,
+          allowSnapshotting: allowSnapshotting,
+          transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+              _rotationTransitionBuilder(
+            numberOfTurns,
+            alignment,
+            animation,
+            curve,
+            child,
+          ),
         ),
-      ),
-      predicate,
-    );
+        predicate,
+      );
+    } catch (e) {
+      _handleNavigationError(e);
+    }
+    return null;
   }
 
   ///If you want to pop sothing before
   ///pushing to another widget you could use it,
   ///just pass your [widget] to go
   static Future<void> backAndTo(Widget page) async {
-    Go.back();
-    to(page);
+    try {
+      Go.back();
+      to(page);
+    } catch (e) {
+      _handleNavigationError(e);
+    }
   }
-}
 
-Widget _rotationTransitionBuilder(
-  double numberOfTurns,
-  Alignment alignment,
-  Animation<double> animation,
-  Curve curve,
-  Widget child,
-) {
-  Tween<double> tween = Tween(
-    begin: 0,
-    end: numberOfTurns,
-  );
+  static Widget _rotationTransitionBuilder(
+    double numberOfTurns,
+    Alignment alignment,
+    Animation<double> animation,
+    Curve curve,
+    Widget child,
+  ) {
+    Tween<double> tween = Tween(
+      begin: 0,
+      end: numberOfTurns,
+    );
 
-  CurvedAnimation curvedAnimation = CurvedAnimation(
-    parent: animation,
-    curve: curve,
-  );
+    CurvedAnimation curvedAnimation = CurvedAnimation(
+      parent: animation,
+      curve: curve,
+    );
 
-  return RotationTransition(
-    turns: tween.animate(curvedAnimation),
-    alignment: alignment,
-    child: child,
-  );
+    return RotationTransition(
+      turns: tween.animate(curvedAnimation),
+      alignment: alignment,
+      child: child,
+    );
+  }
 }

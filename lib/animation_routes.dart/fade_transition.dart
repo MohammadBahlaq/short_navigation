@@ -17,27 +17,32 @@ class GoFade {
     bool allowSnapshotting = true,
     Curve curve = Curves.linear,
   }) async {
-    return Go.navigatorKey.currentState?.push<T>(
-      PageRouteBuilder(
-        settings: settings,
-        pageBuilder: (context, animation, secondaryAnimation) => page,
-        transitionDuration: transitionDuration,
-        reverseTransitionDuration: reverseTransitionDuration,
-        opaque: opaque,
-        barrierDismissible: barrierDismissible,
-        barrierColor: barrierColor,
-        barrierLabel: barrierLabel,
-        maintainState: maintainState,
-        fullscreenDialog: fullscreenDialog,
-        allowSnapshotting: allowSnapshotting,
-        transitionsBuilder: (context, animation, secondaryAnimation, child) =>
-            _fadeTransitionBuilder(
-          animation,
-          curve,
-          child,
+    try {
+      return Go.navigatorKey.currentState!.push<T>(
+        PageRouteBuilder(
+          settings: settings,
+          pageBuilder: (context, animation, secondaryAnimation) => page,
+          transitionDuration: transitionDuration,
+          reverseTransitionDuration: reverseTransitionDuration,
+          opaque: opaque,
+          barrierDismissible: barrierDismissible,
+          barrierColor: barrierColor,
+          barrierLabel: barrierLabel,
+          maintainState: maintainState,
+          fullscreenDialog: fullscreenDialog,
+          allowSnapshotting: allowSnapshotting,
+          transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+              _fadeTransitionBuilder(
+            animation,
+            curve,
+            child,
+          ),
         ),
-      ),
-    );
+      );
+    } catch (e) {
+      _handleNavigationError(e);
+    }
+    return null;
   }
 
   ///This is simple navigation all you have to do
@@ -57,27 +62,32 @@ class GoFade {
     bool allowSnapshotting = true,
     Curve curve = Curves.linear,
   }) async {
-    return Go.navigatorKey.currentState?.pushReplacement<T, TO>(
-      PageRouteBuilder(
-        settings: settings,
-        pageBuilder: (context, animation, secondaryAnimation) => page,
-        transitionDuration: transitionDuration,
-        reverseTransitionDuration: reverseTransitionDuration,
-        opaque: opaque,
-        barrierDismissible: barrierDismissible,
-        barrierColor: barrierColor,
-        barrierLabel: barrierLabel,
-        maintainState: maintainState,
-        fullscreenDialog: fullscreenDialog,
-        allowSnapshotting: allowSnapshotting,
-        transitionsBuilder: (context, animation, secondaryAnimation, child) =>
-            _fadeTransitionBuilder(
-          animation,
-          curve,
-          child,
+    try {
+      return Go.navigatorKey.currentState!.pushReplacement<T, TO>(
+        PageRouteBuilder(
+          settings: settings,
+          pageBuilder: (context, animation, secondaryAnimation) => page,
+          transitionDuration: transitionDuration,
+          reverseTransitionDuration: reverseTransitionDuration,
+          opaque: opaque,
+          barrierDismissible: barrierDismissible,
+          barrierColor: barrierColor,
+          barrierLabel: barrierLabel,
+          maintainState: maintainState,
+          fullscreenDialog: fullscreenDialog,
+          allowSnapshotting: allowSnapshotting,
+          transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+              _fadeTransitionBuilder(
+            animation,
+            curve,
+            child,
+          ),
         ),
-      ),
-    );
+      );
+    } catch (e) {
+      _handleNavigationError(e);
+    }
+    return null;
   }
 
   ///This is simple navigation all you have to do
@@ -100,56 +110,65 @@ class GoFade {
   }) async {
     predicate ??= (route) => false;
 
-    return Go.navigatorKey.currentState?.pushAndRemoveUntil<T>(
-      PageRouteBuilder(
-        settings: settings,
-        pageBuilder: (context, animation, secondaryAnimation) => page,
-        transitionDuration: transitionDuration,
-        reverseTransitionDuration: reverseTransitionDuration,
-        opaque: opaque,
-        barrierDismissible: barrierDismissible,
-        barrierColor: barrierColor,
-        barrierLabel: barrierLabel,
-        maintainState: maintainState,
-        fullscreenDialog: fullscreenDialog,
-        allowSnapshotting: allowSnapshotting,
-        transitionsBuilder: (context, animation, secondaryAnimation, child) =>
-            _fadeTransitionBuilder(
-          animation,
-          curve,
-          child,
+    try {
+      return Go.navigatorKey.currentState!.pushAndRemoveUntil<T>(
+        PageRouteBuilder(
+          settings: settings,
+          pageBuilder: (context, animation, secondaryAnimation) => page,
+          transitionDuration: transitionDuration,
+          reverseTransitionDuration: reverseTransitionDuration,
+          opaque: opaque,
+          barrierDismissible: barrierDismissible,
+          barrierColor: barrierColor,
+          barrierLabel: barrierLabel,
+          maintainState: maintainState,
+          fullscreenDialog: fullscreenDialog,
+          allowSnapshotting: allowSnapshotting,
+          transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+              _fadeTransitionBuilder(
+            animation,
+            curve,
+            child,
+          ),
         ),
-      ),
-      predicate,
-    );
+        predicate,
+      );
+    } catch (e) {
+      _handleNavigationError(e);
+    }
+    return null;
   }
 
   ///If you want to pop sothing before
   ///pushing to another widget you could use it,
   ///just pass your [widget] to go
   static Future<void> backAndTo(Widget page) async {
-    Go.back();
-    to(page);
+    try {
+      Go.back();
+      to(page);
+    } catch (e) {
+      _handleNavigationError(e);
+    }
   }
-}
 
-Widget _fadeTransitionBuilder(
-  Animation<double> animation,
-  Curve curve,
-  Widget child,
-) {
-  Tween<double> tween = Tween(
-    begin: 0,
-    end: 1,
-  );
+  static Widget _fadeTransitionBuilder(
+    Animation<double> animation,
+    Curve curve,
+    Widget child,
+  ) {
+    Tween<double> tween = Tween(
+      begin: 0,
+      end: 1,
+    );
 
-  CurvedAnimation curvedAnimation = CurvedAnimation(
-    parent: animation,
-    curve: curve,
-  );
+    CurvedAnimation curvedAnimation = CurvedAnimation(
+      parent: animation,
+      curve: curve,
+    );
 
-  return FadeTransition(
-    opacity: tween.animate(curvedAnimation),
-    child: child,
-  );
+    return FadeTransition(
+      opacity: tween.animate(curvedAnimation),
+      child: child,
+    );
+  }
 }

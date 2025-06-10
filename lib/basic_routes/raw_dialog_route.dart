@@ -16,19 +16,24 @@ abstract class GoRawDialogRoute {
             Animation<double> secondaryAnimation, Widget child)?
         transitionBuilder,
   }) async {
-    return Go.navigatorKey.currentState?.push<T>(
-      RawDialogRoute(
-        pageBuilder: (context, animation, secondaryAnimation) => page,
-        barrierDismissible: barrierDismissible,
-        barrierColor: barrierColor,
-        barrierLabel: barrierLabel,
-        transitionDuration: transitionDuration,
-        transitionBuilder: transitionBuilder,
-        settings: settings,
-        anchorPoint: anchorPoint,
-        traversalEdgeBehavior: traversalEdgeBehavior,
-      ),
-    );
+    try {
+      return Go.navigatorKey.currentState!.push<T>(
+        RawDialogRoute(
+          pageBuilder: (context, animation, secondaryAnimation) => page,
+          barrierDismissible: barrierDismissible,
+          barrierColor: barrierColor,
+          barrierLabel: barrierLabel,
+          transitionDuration: transitionDuration,
+          transitionBuilder: transitionBuilder,
+          settings: settings,
+          anchorPoint: anchorPoint,
+          traversalEdgeBehavior: traversalEdgeBehavior,
+        ),
+      );
+    } catch (e) {
+      _handleNavigationError(e);
+    }
+    return null;
   }
 
   ///This is simple navigation all you have to do
@@ -47,19 +52,24 @@ abstract class GoRawDialogRoute {
             Animation<double> secondaryAnimation, Widget child)?
         transitionBuilder,
   }) async {
-    return Go.navigatorKey.currentState?.pushReplacement<T, TO>(
-      RawDialogRoute(
-        pageBuilder: (context, animation, secondaryAnimation) => page,
-        barrierDismissible: barrierDismissible,
-        barrierColor: barrierColor,
-        barrierLabel: barrierLabel,
-        transitionDuration: transitionDuration,
-        transitionBuilder: transitionBuilder,
-        settings: settings,
-        anchorPoint: anchorPoint,
-        traversalEdgeBehavior: traversalEdgeBehavior,
-      ),
-    );
+    try {
+      return Go.navigatorKey.currentState!.pushReplacement<T, TO>(
+        RawDialogRoute(
+          pageBuilder: (context, animation, secondaryAnimation) => page,
+          barrierDismissible: barrierDismissible,
+          barrierColor: barrierColor,
+          barrierLabel: barrierLabel,
+          transitionDuration: transitionDuration,
+          transitionBuilder: transitionBuilder,
+          settings: settings,
+          anchorPoint: anchorPoint,
+          traversalEdgeBehavior: traversalEdgeBehavior,
+        ),
+      );
+    } catch (e) {
+      _handleNavigationError(e);
+    }
+    return null;
   }
 
   ///This is simple navigation all you have to do
@@ -81,27 +91,36 @@ abstract class GoRawDialogRoute {
   }) async {
     predicate ??= (route) => false;
 
-    return Go.navigatorKey.currentState?.pushAndRemoveUntil<T>(
-      RawDialogRoute(
-        pageBuilder: (context, animation, secondaryAnimation) => page,
-        barrierDismissible: barrierDismissible,
-        barrierColor: barrierColor,
-        barrierLabel: barrierLabel,
-        transitionDuration: transitionDuration,
-        transitionBuilder: transitionBuilder,
-        settings: settings,
-        anchorPoint: anchorPoint,
-        traversalEdgeBehavior: traversalEdgeBehavior,
-      ),
-      predicate,
-    );
+    try {
+      return Go.navigatorKey.currentState!.pushAndRemoveUntil<T>(
+        RawDialogRoute(
+          pageBuilder: (context, animation, secondaryAnimation) => page,
+          barrierDismissible: barrierDismissible,
+          barrierColor: barrierColor,
+          barrierLabel: barrierLabel,
+          transitionDuration: transitionDuration,
+          transitionBuilder: transitionBuilder,
+          settings: settings,
+          anchorPoint: anchorPoint,
+          traversalEdgeBehavior: traversalEdgeBehavior,
+        ),
+        predicate,
+      );
+    } catch (e) {
+      _handleNavigationError(e);
+    }
+    return null;
   }
 
   ///If you want to pop sothing before
   ///pushing to another widget you could use it,
   ///just pass your [widget] to go
   static Future<void> backAndTo(Widget page) async {
-    Go.back();
-    to(page);
+    try {
+      Go.back();
+      to(page);
+    } catch (e) {
+      _handleNavigationError(e);
+    }
   }
 }

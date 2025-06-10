@@ -37,6 +37,7 @@ class HomePage extends StatelessWidget {
 
   void navigation() {
     // Go.to(SecondPage());
+    Go.toName("");
 
     // GoFade.to(SecondPage(), transitionDuration: Duration(milliseconds: 600));
 

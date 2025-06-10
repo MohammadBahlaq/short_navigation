@@ -18,28 +18,33 @@ class GoSlide {
     Curve curve = Curves.linear,
     AxisDirection slideDirection = AxisDirection.left,
   }) async {
-    return Go.navigatorKey.currentState?.push<T>(
-      PageRouteBuilder(
-        settings: settings,
-        pageBuilder: (context, animation, secondaryAnimation) => page,
-        transitionDuration: transitionDuration,
-        reverseTransitionDuration: reverseTransitionDuration,
-        opaque: opaque,
-        barrierDismissible: barrierDismissible,
-        barrierColor: barrierColor,
-        barrierLabel: barrierLabel,
-        maintainState: maintainState,
-        fullscreenDialog: fullscreenDialog,
-        allowSnapshotting: allowSnapshotting,
-        transitionsBuilder: (context, animation, secondaryAnimation, child) =>
-            _slideTransitionBuilder(
-          slideDirection,
-          animation,
-          curve,
-          child,
+    try {
+      return Go.navigatorKey.currentState!.push<T>(
+        PageRouteBuilder(
+          settings: settings,
+          pageBuilder: (context, animation, secondaryAnimation) => page,
+          transitionDuration: transitionDuration,
+          reverseTransitionDuration: reverseTransitionDuration,
+          opaque: opaque,
+          barrierDismissible: barrierDismissible,
+          barrierColor: barrierColor,
+          barrierLabel: barrierLabel,
+          maintainState: maintainState,
+          fullscreenDialog: fullscreenDialog,
+          allowSnapshotting: allowSnapshotting,
+          transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+              _slideTransitionBuilder(
+            slideDirection,
+            animation,
+            curve,
+            child,
+          ),
         ),
-      ),
-    );
+      );
+    } catch (e) {
+      _handleNavigationError(e);
+    }
+    return null;
   }
 
   ///This is simple navigation all you have to do
@@ -60,28 +65,33 @@ class GoSlide {
     Curve curve = Curves.linear,
     AxisDirection slideDirection = AxisDirection.left,
   }) async {
-    return Go.navigatorKey.currentState?.pushReplacement<T, TO>(
-      PageRouteBuilder(
-        settings: settings,
-        pageBuilder: (context, animation, secondaryAnimation) => page,
-        transitionDuration: transitionDuration,
-        reverseTransitionDuration: reverseTransitionDuration,
-        opaque: opaque,
-        barrierDismissible: barrierDismissible,
-        barrierColor: barrierColor,
-        barrierLabel: barrierLabel,
-        maintainState: maintainState,
-        fullscreenDialog: fullscreenDialog,
-        allowSnapshotting: allowSnapshotting,
-        transitionsBuilder: (context, animation, secondaryAnimation, child) =>
-            _slideTransitionBuilder(
-          slideDirection,
-          animation,
-          curve,
-          child,
+    try {
+      return Go.navigatorKey.currentState!.pushReplacement<T, TO>(
+        PageRouteBuilder(
+          settings: settings,
+          pageBuilder: (context, animation, secondaryAnimation) => page,
+          transitionDuration: transitionDuration,
+          reverseTransitionDuration: reverseTransitionDuration,
+          opaque: opaque,
+          barrierDismissible: barrierDismissible,
+          barrierColor: barrierColor,
+          barrierLabel: barrierLabel,
+          maintainState: maintainState,
+          fullscreenDialog: fullscreenDialog,
+          allowSnapshotting: allowSnapshotting,
+          transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+              _slideTransitionBuilder(
+            slideDirection,
+            animation,
+            curve,
+            child,
+          ),
         ),
-      ),
-    );
+      );
+    } catch (e) {
+      _handleNavigationError(e);
+    }
+    return null;
   }
 
   ///This is simple navigation all you have to do
@@ -105,80 +115,89 @@ class GoSlide {
   }) async {
     predicate ??= (route) => false;
 
-    return Go.navigatorKey.currentState?.pushAndRemoveUntil<T>(
-      PageRouteBuilder(
-        settings: settings,
-        pageBuilder: (context, animation, secondaryAnimation) => page,
-        transitionDuration: transitionDuration,
-        reverseTransitionDuration: reverseTransitionDuration,
-        opaque: opaque,
-        barrierDismissible: barrierDismissible,
-        barrierColor: barrierColor,
-        barrierLabel: barrierLabel,
-        maintainState: maintainState,
-        fullscreenDialog: fullscreenDialog,
-        allowSnapshotting: allowSnapshotting,
-        transitionsBuilder: (context, animation, secondaryAnimation, child) =>
-            _slideTransitionBuilder(
-          slideDirection,
-          animation,
-          curve,
-          child,
+    try {
+      return Go.navigatorKey.currentState!.pushAndRemoveUntil<T>(
+        PageRouteBuilder(
+          settings: settings,
+          pageBuilder: (context, animation, secondaryAnimation) => page,
+          transitionDuration: transitionDuration,
+          reverseTransitionDuration: reverseTransitionDuration,
+          opaque: opaque,
+          barrierDismissible: barrierDismissible,
+          barrierColor: barrierColor,
+          barrierLabel: barrierLabel,
+          maintainState: maintainState,
+          fullscreenDialog: fullscreenDialog,
+          allowSnapshotting: allowSnapshotting,
+          transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+              _slideTransitionBuilder(
+            slideDirection,
+            animation,
+            curve,
+            child,
+          ),
         ),
-      ),
-      predicate,
-    );
+        predicate,
+      );
+    } catch (e) {
+      _handleNavigationError(e);
+    }
+    return null;
   }
 
   ///If you want to pop sothing before
   ///pushing to another widget you could use it,
   ///just pass your [widget] to go
   static Future<void> backAndTo(Widget page) async {
-    Go.back();
-    to(page);
+    try {
+      Go.back();
+      to(page);
+    } on Exception catch (e) {
+      _handleNavigationError(e);
+    }
   }
-}
 
-Widget _slideTransitionBuilder(
-  AxisDirection slideDirection,
-  Animation<double> animation,
-  Curve curve,
-  Widget child,
-) {
-  Tween<Offset> tween = _getTween(slideDirection);
+  static Widget _slideTransitionBuilder(
+    AxisDirection slideDirection,
+    Animation<double> animation,
+    Curve curve,
+    Widget child,
+  ) {
+    Tween<Offset> tween = _getTween(slideDirection);
 
-  CurvedAnimation curvedAnimation = CurvedAnimation(
-    parent: animation,
-    curve: curve,
-  );
+    CurvedAnimation curvedAnimation = CurvedAnimation(
+      parent: animation,
+      curve: curve,
+    );
 
-  return SlideTransition(
-    position: tween.animate(curvedAnimation),
-    child: child,
-  );
-}
+    return SlideTransition(
+      position: tween.animate(curvedAnimation),
+      child: child,
+    );
+  }
 
-Tween<Offset> _getTween(AxisDirection axisDirection) {
-  switch (axisDirection) {
-    case AxisDirection.left:
-      return Tween<Offset>(
-        begin: const Offset(-1, 0),
-        end: const Offset(0, 0),
-      );
-    case AxisDirection.right:
-      return Tween<Offset>(
-        begin: const Offset(1, 0),
-        end: const Offset(0, 0),
-      );
-    case AxisDirection.up:
-      return Tween<Offset>(
-        begin: const Offset(0, -1),
-        end: const Offset(0, 0),
-      );
-    case AxisDirection.down:
-      return Tween<Offset>(
-        begin: const Offset(0, 1),
-        end: const Offset(0, 0),
-      );
+  static Tween<Offset> _getTween(AxisDirection axisDirection) {
+    switch (axisDirection) {
+      case AxisDirection.left:
+        return Tween<Offset>(
+          begin: const Offset(-1, 0),
+          end: const Offset(0, 0),
+        );
+      case AxisDirection.right:
+        return Tween<Offset>(
+          begin: const Offset(1, 0),
+          end: const Offset(0, 0),
+        );
+      case AxisDirection.up:
+        return Tween<Offset>(
+          begin: const Offset(0, -1),
+          end: const Offset(0, 0),
+        );
+      case AxisDirection.down:
+        return Tween<Offset>(
+          begin: const Offset(0, 1),
+          end: const Offset(0, 0),
+        );
+    }
   }
 }

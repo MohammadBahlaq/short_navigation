@@ -15,18 +15,23 @@ abstract class GoMessenger {
     Offset? anchorPoint,
     TraversalEdgeBehavior? traversalEdgeBehavior,
   }) async {
-    return showAdaptiveDialog<T>(
-      context: Go.context,
-      builder: (context) => content,
-      barrierDismissible: barrierDismissible,
-      barrierColor: barrierColor,
-      barrierLabel: barrierLabel,
-      useSafeArea: useSafeArea,
-      useRootNavigator: useRootNavigator,
-      routeSettings: routeSettings,
-      anchorPoint: anchorPoint,
-      traversalEdgeBehavior: traversalEdgeBehavior,
-    );
+    try {
+      return showAdaptiveDialog<T>(
+        context: Go.context,
+        builder: (context) => content,
+        barrierDismissible: barrierDismissible,
+        barrierColor: barrierColor,
+        barrierLabel: barrierLabel,
+        useSafeArea: useSafeArea,
+        useRootNavigator: useRootNavigator,
+        routeSettings: routeSettings,
+        anchorPoint: anchorPoint,
+        traversalEdgeBehavior: traversalEdgeBehavior,
+      );
+    } catch (e) {
+      _handleNavigationError(e);
+    }
+    return null;
   }
 
   ///If you wnat to [showModalBottomSheet] without using context
@@ -53,48 +58,65 @@ abstract class GoMessenger {
     Offset? anchorPoint,
     AnimationStyle? sheetAnimationStyle,
   }) async {
-    return showModalBottomSheet<T>(
-      context: Go.context,
-      builder: (context) => content,
-      backgroundColor: backgroundColor,
-      barrierLabel: barrierLabel,
-      elevation: elevation,
-      shape: shape,
-      clipBehavior: clipBehavior,
-      constraints: constraints,
-      barrierColor: barrierColor,
-      isScrollControlled: isScrollControlled,
-      scrollControlDisabledMaxHeightRatio: scrollControlDisabledMaxHeightRatio,
-      useRootNavigator: useRootNavigator,
-      isDismissible: isDismissible,
-      enableDrag: enableDrag,
-      showDragHandle: showDragHandle,
-      useSafeArea: useSafeArea,
-      routeSettings: routeSettings,
-      transitionAnimationController: transitionAnimationController,
-      anchorPoint: anchorPoint,
-      sheetAnimationStyle: sheetAnimationStyle,
-    );
+    try {
+      return showModalBottomSheet<T>(
+        context: Go.context,
+        builder: (context) => content,
+        backgroundColor: backgroundColor,
+        barrierLabel: barrierLabel,
+        elevation: elevation,
+        shape: shape,
+        clipBehavior: clipBehavior,
+        constraints: constraints,
+        barrierColor: barrierColor,
+        isScrollControlled: isScrollControlled,
+        scrollControlDisabledMaxHeightRatio:
+            scrollControlDisabledMaxHeightRatio,
+        useRootNavigator: useRootNavigator,
+        isDismissible: isDismissible,
+        enableDrag: enableDrag,
+        showDragHandle: showDragHandle,
+        useSafeArea: useSafeArea,
+        routeSettings: routeSettings,
+        transitionAnimationController: transitionAnimationController,
+        anchorPoint: anchorPoint,
+        sheetAnimationStyle: sheetAnimationStyle,
+      );
+    } catch (e) {
+      _handleNavigationError(e);
+    }
+    return null;
   }
 
   ///If you wnat to [showSnackBar] without using context
   ///you have to use this function and the package will pass the context automaticlly.
   ///You can use all [showSnackBar] proparties as usuall.
-  static ScaffoldFeatureController<SnackBar, SnackBarClosedReason> snackBar(
+  static ScaffoldFeatureController<SnackBar, SnackBarClosedReason>? snackBar(
     SnackBar snackBar, {
     AnimationStyle? snackBarAnimationStyle,
   }) {
-    return ScaffoldMessenger.of(Go.context).showSnackBar(
-      snackBar,
-      snackBarAnimationStyle: snackBarAnimationStyle,
-    );
+    try {
+      return ScaffoldMessenger.of(Go.context).showSnackBar(
+        snackBar,
+        snackBarAnimationStyle: snackBarAnimationStyle,
+      );
+    } catch (e) {
+      _handleNavigationError(e);
+    }
+    return null;
   }
 
   ///If you wnat to [showMaterialBanner] without using context
   ///you have to use this function and the package will pass the context automaticlly.
   ///You can use all [showMaterialBanner] proparties as usuall.
-  static ScaffoldFeatureController<MaterialBanner, MaterialBannerClosedReason>
+  static ScaffoldFeatureController<MaterialBanner, MaterialBannerClosedReason>?
       materialBanner(MaterialBanner materialBanner) {
-    return ScaffoldMessenger.of(Go.context).showMaterialBanner(materialBanner);
+    try {
+      return ScaffoldMessenger.of(Go.context)
+          .showMaterialBanner(materialBanner);
+    } catch (e) {
+      _handleNavigationError(e);
+    }
+    return null;
   }
 }

@@ -1,4 +1,4 @@
-## 2.2.5
+## 2.3.0
 
 * Support Animations [SlideTransition, FadeTransition, ScaleTransition, RotationTransition,     SizeTransition]
 * Support new Routes [DialogRoute, RawDialogRoute, PageRouteBuilder, ModalBottomSheetRoute]
@@ -17,3 +17,6 @@
 * Version 2.2.3
 * Add default value for backUntil function
 * We made it to back to the first route by default
+
+* Version 2.3.0
+* Handling navigation exceptions by printing red logs or showing dialog to explain error clearly

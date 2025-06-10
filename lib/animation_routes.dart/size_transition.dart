@@ -36,29 +36,34 @@ class GoSize {
     Axis sizeAxis = Axis.vertical,
     Curve curve = Curves.linear,
   }) async {
-    return Go.navigatorKey.currentState?.push<T>(
-      PageRouteBuilder(
-        settings: settings,
-        pageBuilder: (context, animation, secondaryAnimation) => page,
-        transitionDuration: transitionDuration,
-        reverseTransitionDuration: reverseTransitionDuration,
-        opaque: opaque,
-        barrierDismissible: barrierDismissible,
-        barrierColor: barrierColor,
-        barrierLabel: barrierLabel,
-        maintainState: maintainState,
-        fullscreenDialog: fullscreenDialog,
-        allowSnapshotting: allowSnapshotting,
-        transitionsBuilder: (context, animation, secondaryAnimation, child) =>
-            _sizeTransitionBuilder(
-          sizeDirection,
-          sizeAxis,
-          animation,
-          curve,
-          child,
+    try {
+      return Go.navigatorKey.currentState!.push<T>(
+        PageRouteBuilder(
+          settings: settings,
+          pageBuilder: (context, animation, secondaryAnimation) => page,
+          transitionDuration: transitionDuration,
+          reverseTransitionDuration: reverseTransitionDuration,
+          opaque: opaque,
+          barrierDismissible: barrierDismissible,
+          barrierColor: barrierColor,
+          barrierLabel: barrierLabel,
+          maintainState: maintainState,
+          fullscreenDialog: fullscreenDialog,
+          allowSnapshotting: allowSnapshotting,
+          transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+              _sizeTransitionBuilder(
+            sizeDirection,
+            sizeAxis,
+            animation,
+            curve,
+            child,
+          ),
         ),
-      ),
-    );
+      );
+    } catch (e) {
+      _handleNavigationError(e);
+    }
+    return null;
   }
 
   ///This is simple navigation all you have to do
@@ -87,29 +92,34 @@ class GoSize {
     Axis sizeAxis = Axis.vertical,
     Curve curve = Curves.linear,
   }) async {
-    return Go.navigatorKey.currentState?.pushReplacement<T, TO>(
-      PageRouteBuilder(
-        settings: settings,
-        pageBuilder: (context, animation, secondaryAnimation) => page,
-        transitionDuration: transitionDuration,
-        reverseTransitionDuration: reverseTransitionDuration,
-        opaque: opaque,
-        barrierDismissible: barrierDismissible,
-        barrierColor: barrierColor,
-        barrierLabel: barrierLabel,
-        maintainState: maintainState,
-        fullscreenDialog: fullscreenDialog,
-        allowSnapshotting: allowSnapshotting,
-        transitionsBuilder: (context, animation, secondaryAnimation, child) =>
-            _sizeTransitionBuilder(
-          sizeDirection,
-          sizeAxis,
-          animation,
-          curve,
-          child,
+    try {
+      return Go.navigatorKey.currentState!.pushReplacement<T, TO>(
+        PageRouteBuilder(
+          settings: settings,
+          pageBuilder: (context, animation, secondaryAnimation) => page,
+          transitionDuration: transitionDuration,
+          reverseTransitionDuration: reverseTransitionDuration,
+          opaque: opaque,
+          barrierDismissible: barrierDismissible,
+          barrierColor: barrierColor,
+          barrierLabel: barrierLabel,
+          maintainState: maintainState,
+          fullscreenDialog: fullscreenDialog,
+          allowSnapshotting: allowSnapshotting,
+          transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+              _sizeTransitionBuilder(
+            sizeDirection,
+            sizeAxis,
+            animation,
+            curve,
+            child,
+          ),
         ),
-      ),
-    );
+      );
+    } catch (e) {
+      _handleNavigationError(e);
+    }
+    return null;
   }
 
   ///This is simple navigation all you have to do
@@ -142,84 +152,93 @@ class GoSize {
   }) async {
     predicate ??= (route) => false;
 
-    return Go.navigatorKey.currentState?.pushAndRemoveUntil<T>(
-      PageRouteBuilder(
-        settings: settings,
-        pageBuilder: (context, animation, secondaryAnimation) => page,
-        transitionDuration: transitionDuration,
-        reverseTransitionDuration: reverseTransitionDuration,
-        opaque: opaque,
-        barrierDismissible: barrierDismissible,
-        barrierColor: barrierColor,
-        barrierLabel: barrierLabel,
-        maintainState: maintainState,
-        fullscreenDialog: fullscreenDialog,
-        allowSnapshotting: allowSnapshotting,
-        transitionsBuilder: (context, animation, secondaryAnimation, child) =>
-            _sizeTransitionBuilder(
-          sizeDirection,
-          sizeAxis,
-          animation,
-          curve,
-          child,
+    try {
+      return Go.navigatorKey.currentState!.pushAndRemoveUntil<T>(
+        PageRouteBuilder(
+          settings: settings,
+          pageBuilder: (context, animation, secondaryAnimation) => page,
+          transitionDuration: transitionDuration,
+          reverseTransitionDuration: reverseTransitionDuration,
+          opaque: opaque,
+          barrierDismissible: barrierDismissible,
+          barrierColor: barrierColor,
+          barrierLabel: barrierLabel,
+          maintainState: maintainState,
+          fullscreenDialog: fullscreenDialog,
+          allowSnapshotting: allowSnapshotting,
+          transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+              _sizeTransitionBuilder(
+            sizeDirection,
+            sizeAxis,
+            animation,
+            curve,
+            child,
+          ),
         ),
-      ),
-      predicate,
-    );
+        predicate,
+      );
+    } catch (e) {
+      _handleNavigationError(e);
+    }
+    return null;
   }
 
   ///If you want to pop sothing before
   ///pushing to another widget you could use it,
   ///just pass your [widget] to go
   static Future<void> backAndTo(Widget page) async {
-    Go.back();
-    to(page);
-  }
-}
-
-Widget _sizeTransitionBuilder(
-  SizeDirection sizeDirection,
-  Axis sizeAxis,
-  Animation<double> animation,
-  Curve curve,
-  Widget child,
-) {
-  Tween<double> tween = Tween(
-    begin: 0,
-    end: 1,
-  );
-
-  CurvedAnimation curvedAnimation = CurvedAnimation(
-    parent: animation,
-    curve: curve,
-  );
-
-  Alignment alignment;
-
-  switch (sizeDirection) {
-    case SizeDirection.center:
-      alignment = Alignment.center;
-      break;
-    case SizeDirection.top:
-      alignment = Alignment.topCenter;
-      break;
-    case SizeDirection.bottom:
-      alignment = Alignment.bottomCenter;
-      break;
-    case SizeDirection.right:
-      alignment = Alignment.centerRight;
-      break;
-    case SizeDirection.left:
-      alignment = Alignment.centerLeft;
-      break;
+    try {
+      Go.back();
+      to(page);
+    } catch (e) {
+      _handleNavigationError(e);
+    }
   }
 
-  return Align(
-    alignment: alignment,
-    child: SizeTransition(
-      sizeFactor: tween.animate(curvedAnimation),
-      axis: sizeAxis,
-      child: child,
-    ),
-  );
+  static Widget _sizeTransitionBuilder(
+    SizeDirection sizeDirection,
+    Axis sizeAxis,
+    Animation<double> animation,
+    Curve curve,
+    Widget child,
+  ) {
+    Tween<double> tween = Tween(
+      begin: 0,
+      end: 1,
+    );
+
+    CurvedAnimation curvedAnimation = CurvedAnimation(
+      parent: animation,
+      curve: curve,
+    );
+
+    Alignment alignment;
+
+    switch (sizeDirection) {
+      case SizeDirection.center:
+        alignment = Alignment.center;
+        break;
+      case SizeDirection.top:
+        alignment = Alignment.topCenter;
+        break;
+      case SizeDirection.bottom:
+        alignment = Alignment.bottomCenter;
+        break;
+      case SizeDirection.right:
+        alignment = Alignment.centerRight;
+        break;
+      case SizeDirection.left:
+        alignment = Alignment.centerLeft;
+        break;
+    }
+
+    return Align(
+      alignment: alignment,
+      child: SizeTransition(
+        sizeFactor: tween.animate(curvedAnimation),
+        axis: sizeAxis,
+        child: child,
+      ),
+    );
+  }
 }
