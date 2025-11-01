@@ -157,7 +157,7 @@ abstract class Go {
   ///This is simple navigation all you have to do
   ///just pass your route [name] to go and it will
   ///remove all routes from the tree
-  static Future<T?> toNameRemoveAll<T extends Object?>(
+  static Future<T?> toNameRemoveUntil<T extends Object?>(
     String page, {
     Object? arguments,
     bool Function(Route<dynamic> route)? predicate,
