@@ -211,7 +211,7 @@ Explaining of how to use this package
   ///This is simple navigation all you have to do
   ///just pass your route [name] to go and it will
   ///remove all routes from the tree
-  Go.toNameRemoveAll("/homePage");
+  Go.toNameRemoveUntil("/homePage");
 
   ///Instead of using [Navigator.of(context).popAndPushNamed("/homePage");]
   ///If you want to pop sothing before
@@ -240,6 +240,12 @@ Explaining of how to use this package
   Go.multiBack(5);
   ///If you wand to pop 2 pages
   Go.multiBack(2);
+
+  
+  ///Instead of using [Navigator.of(context).popUntil((route)=> false);]
+  ///If you want to pop until specific route
+  ///you can use this method instead
+  Go.backUntil();
 ```
 
 ## Show [dialog, bottomSheet, snackBar, and materialBanner] using class [GoMessenger]

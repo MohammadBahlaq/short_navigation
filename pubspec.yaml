@@ -1,6 +1,6 @@
 name: short_navigation
 description: "This package built to navigate between screens (routes) without using context (BuildContext)."
-version: 2.3.0
+version: 2.4.0
 homepage: https://github.com/MohammadBahlaq/short_navigation.git
 
 environment:
@@ -15,6 +15,9 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^4.0.0
+
+  # This command-line to publish the package to pub.dev:
+  # flutter pub publish --dry-run
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

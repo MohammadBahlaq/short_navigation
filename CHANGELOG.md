@@ -1,4 +1,4 @@
-## 2.3.0
+## 2.4.0
 
 * Support Animations [SlideTransition, FadeTransition, ScaleTransition, RotationTransition,     SizeTransition]
 * Support new Routes [DialogRoute, RawDialogRoute, PageRouteBuilder, ModalBottomSheetRoute]
@@ -20,3 +20,6 @@
 
 * Version 2.3.0
 * Handling navigation exceptions by printing red logs or showing dialog to explain error clearly
+
+* Version 2.4.0
+* Change Go.toNameRemoveAll to Go.toNameRemoveUntil to be more clear
