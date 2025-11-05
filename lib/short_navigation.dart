@@ -247,7 +247,7 @@ abstract class Go {
   }
 }
 
-_handleNavigationError(e) {
+_handleNavigationError(Object e) {
   if (e.toString().contains("Unexpected null value")) {
     debugPrint(
       "${'\x1B[31m'}[short_navigation]: Please make sure that you passed Go.navigatorKey to navigatorKey in MaterialApp like this `navigatorKey: Go.navigatorKey`",
