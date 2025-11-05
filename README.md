@@ -323,7 +323,7 @@ Explaining of how to use this package
 I hope this package helped you very well.
 If you need to contact with me: 
 
-<img src="https://github.com/MohammadBahlaq/short_navigation/raw/main/assets/Gmail.jpg" width="22"> [Bahlaq57@gmail.com]
+<img src="https://github.com/MohammadBahlaq/short_navigation/raw/main/assets/Gmail.jpg" width="22"> [Mohammad.Bahlaq99@gmail.com]
 
 <!-- [<img src="https://github.com/MohammadBahlaq/short_navigation/raw/main/assets/Gmail.jpg" width="22">](Bahlaq57@gmail.com) -->
 
