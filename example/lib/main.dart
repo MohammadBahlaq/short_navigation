@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      navigatorKey: Go.navigatorKey, //*Pass this navigatorKey here
+      // navigatorKey: Go.navigatorKey, //*Pass this navigatorKey here
       home: const HomePage(),
     );
   }

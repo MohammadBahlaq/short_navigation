@@ -1,2 +1,0 @@
-D:/projects/short_navigation/example/android/app/.cxx/Debug/t542o472/armeabi-v7a/CMakeFiles/edit_cache.dir
-D:/projects/short_navigation/example/android/app/.cxx/Debug/t542o472/armeabi-v7a/CMakeFiles/rebuild_cache.dir
