@@ -1,6 +1,6 @@
 part of 'package:short_navigation/short_navigation.dart';
 
-class GoFade {
+abstract class GoFade {
   ///This is simple navigation all you have to do
   ///just pass your [widget] to go
   static Future<T?> to<T extends Object?>(
@@ -32,11 +32,7 @@ class GoFade {
           fullscreenDialog: fullscreenDialog,
           allowSnapshotting: allowSnapshotting,
           transitionsBuilder: (context, animation, secondaryAnimation, child) =>
-              _fadeTransitionBuilder(
-            animation,
-            curve,
-            child,
-          ),
+              GoTransitions.fade(curve: curve).builder(animation, child),
         ),
       );
     } catch (e) {
@@ -77,11 +73,7 @@ class GoFade {
           fullscreenDialog: fullscreenDialog,
           allowSnapshotting: allowSnapshotting,
           transitionsBuilder: (context, animation, secondaryAnimation, child) =>
-              _fadeTransitionBuilder(
-            animation,
-            curve,
-            child,
-          ),
+              GoTransitions.fade(curve: curve).builder(animation, child),
         ),
       );
     } catch (e) {
@@ -125,11 +117,7 @@ class GoFade {
           fullscreenDialog: fullscreenDialog,
           allowSnapshotting: allowSnapshotting,
           transitionsBuilder: (context, animation, secondaryAnimation, child) =>
-              _fadeTransitionBuilder(
-            animation,
-            curve,
-            child,
-          ),
+              GoTransitions.fade(curve: curve).builder(animation, child),
         ),
         predicate,
       );
@@ -149,26 +137,5 @@ class GoFade {
     } catch (e) {
       _handleNavigationError(e);
     }
-  }
-
-  static Widget _fadeTransitionBuilder(
-    Animation<double> animation,
-    Curve curve,
-    Widget child,
-  ) {
-    Tween<double> tween = Tween(
-      begin: 0,
-      end: 1,
-    );
-
-    CurvedAnimation curvedAnimation = CurvedAnimation(
-      parent: animation,
-      curve: curve,
-    );
-
-    return FadeTransition(
-      opacity: tween.animate(curvedAnimation),
-      child: child,
-    );
   }
 }

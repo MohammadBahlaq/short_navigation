@@ -92,6 +92,14 @@ Explaining of how to use this package
   ///You can navigate using [GoFade] class
   ///and use curve to chose any curve you want
   GoFade.to(HomePage()) //It will increase opacity smothly during navigation
+
+  /// You can use multi animations in one navigation using [GoAnimation] class
+  /// Use [transitions] to pass your transitions you want from class [GoTransitions].
+  GoAnimation.to(
+  ProfileScreen(),
+  transitions: [GoTransitions.fade(), GoTransitions.slide()],
+  transitionDuration: Duration(seconds: 1),
+  );
 ```
 
 ## Navigation using [DialogRoute] using class [GoDialogRoute]

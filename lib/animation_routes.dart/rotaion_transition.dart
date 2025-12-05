@@ -1,6 +1,6 @@
 part of 'package:short_navigation/short_navigation.dart';
 
-class GoRotation {
+abstract class GoRotation {
   ///This is simple navigation all you have to do
   ///just pass your [widget] to go
   static Future<T?> to<T extends Object?>(
@@ -22,26 +22,25 @@ class GoRotation {
     try {
       return Go.navigatorKey.currentState!.push<T>(
         PageRouteBuilder(
-          settings: settings,
-          pageBuilder: (context, animation, secondaryAnimation) => page,
-          transitionDuration: transitionDuration,
-          reverseTransitionDuration: reverseTransitionDuration,
-          opaque: opaque,
-          barrierDismissible: barrierDismissible,
-          barrierColor: barrierColor,
-          barrierLabel: barrierLabel,
-          maintainState: maintainState,
-          fullscreenDialog: fullscreenDialog,
-          allowSnapshotting: allowSnapshotting,
-          transitionsBuilder: (context, animation, secondaryAnimation, child) =>
-              _rotationTransitionBuilder(
-            numberOfTurns,
-            alignment,
-            animation,
-            curve,
-            child,
-          ),
-        ),
+            settings: settings,
+            pageBuilder: (context, animation, secondaryAnimation) => page,
+            transitionDuration: transitionDuration,
+            reverseTransitionDuration: reverseTransitionDuration,
+            opaque: opaque,
+            barrierDismissible: barrierDismissible,
+            barrierColor: barrierColor,
+            barrierLabel: barrierLabel,
+            maintainState: maintainState,
+            fullscreenDialog: fullscreenDialog,
+            allowSnapshotting: allowSnapshotting,
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) {
+              return GoTransitions.rotation(
+                      curve: curve,
+                      alignment: alignment,
+                      numberOfTurns: numberOfTurns)
+                  .builder(animation, child);
+            }),
       );
     } catch (e) {
       _handleNavigationError(e);
@@ -71,26 +70,25 @@ class GoRotation {
     try {
       return Go.navigatorKey.currentState!.pushReplacement<T, TO>(
         PageRouteBuilder(
-          settings: settings,
-          pageBuilder: (context, animation, secondaryAnimation) => page,
-          transitionDuration: transitionDuration,
-          reverseTransitionDuration: reverseTransitionDuration,
-          opaque: opaque,
-          barrierDismissible: barrierDismissible,
-          barrierColor: barrierColor,
-          barrierLabel: barrierLabel,
-          maintainState: maintainState,
-          fullscreenDialog: fullscreenDialog,
-          allowSnapshotting: allowSnapshotting,
-          transitionsBuilder: (context, animation, secondaryAnimation, child) =>
-              _rotationTransitionBuilder(
-            numberOfTurns,
-            alignment,
-            animation,
-            curve,
-            child,
-          ),
-        ),
+            settings: settings,
+            pageBuilder: (context, animation, secondaryAnimation) => page,
+            transitionDuration: transitionDuration,
+            reverseTransitionDuration: reverseTransitionDuration,
+            opaque: opaque,
+            barrierDismissible: barrierDismissible,
+            barrierColor: barrierColor,
+            barrierLabel: barrierLabel,
+            maintainState: maintainState,
+            fullscreenDialog: fullscreenDialog,
+            allowSnapshotting: allowSnapshotting,
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) {
+              return GoTransitions.rotation(
+                      curve: curve,
+                      alignment: alignment,
+                      numberOfTurns: numberOfTurns)
+                  .builder(animation, child);
+            }),
       );
     } catch (e) {
       _handleNavigationError(e);
@@ -123,26 +121,25 @@ class GoRotation {
     try {
       return Go.navigatorKey.currentState!.pushAndRemoveUntil<T>(
         PageRouteBuilder(
-          settings: settings,
-          pageBuilder: (context, animation, secondaryAnimation) => page,
-          transitionDuration: transitionDuration,
-          reverseTransitionDuration: reverseTransitionDuration,
-          opaque: opaque,
-          barrierDismissible: barrierDismissible,
-          barrierColor: barrierColor,
-          barrierLabel: barrierLabel,
-          maintainState: maintainState,
-          fullscreenDialog: fullscreenDialog,
-          allowSnapshotting: allowSnapshotting,
-          transitionsBuilder: (context, animation, secondaryAnimation, child) =>
-              _rotationTransitionBuilder(
-            numberOfTurns,
-            alignment,
-            animation,
-            curve,
-            child,
-          ),
-        ),
+            settings: settings,
+            pageBuilder: (context, animation, secondaryAnimation) => page,
+            transitionDuration: transitionDuration,
+            reverseTransitionDuration: reverseTransitionDuration,
+            opaque: opaque,
+            barrierDismissible: barrierDismissible,
+            barrierColor: barrierColor,
+            barrierLabel: barrierLabel,
+            maintainState: maintainState,
+            fullscreenDialog: fullscreenDialog,
+            allowSnapshotting: allowSnapshotting,
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) {
+              return GoTransitions.rotation(
+                      curve: curve,
+                      alignment: alignment,
+                      numberOfTurns: numberOfTurns)
+                  .builder(animation, child);
+            }),
         predicate,
       );
     } catch (e) {
@@ -161,29 +158,5 @@ class GoRotation {
     } catch (e) {
       _handleNavigationError(e);
     }
-  }
-
-  static Widget _rotationTransitionBuilder(
-    double numberOfTurns,
-    Alignment alignment,
-    Animation<double> animation,
-    Curve curve,
-    Widget child,
-  ) {
-    Tween<double> tween = Tween(
-      begin: 0,
-      end: numberOfTurns,
-    );
-
-    CurvedAnimation curvedAnimation = CurvedAnimation(
-      parent: animation,
-      curve: curve,
-    );
-
-    return RotationTransition(
-      turns: tween.animate(curvedAnimation),
-      alignment: alignment,
-      child: child,
-    );
   }
 }

@@ -1,6 +1,6 @@
 part of 'package:short_navigation/short_navigation.dart';
 
-class GoSlide {
+abstract class GoSlide {
   ///This is simple navigation all you have to do
   ///just pass your [widget] to go
   static Future<T?> to<T extends Object?>(
@@ -21,25 +21,23 @@ class GoSlide {
     try {
       return Go.navigatorKey.currentState!.push<T>(
         PageRouteBuilder(
-          settings: settings,
-          pageBuilder: (context, animation, secondaryAnimation) => page,
-          transitionDuration: transitionDuration,
-          reverseTransitionDuration: reverseTransitionDuration,
-          opaque: opaque,
-          barrierDismissible: barrierDismissible,
-          barrierColor: barrierColor,
-          barrierLabel: barrierLabel,
-          maintainState: maintainState,
-          fullscreenDialog: fullscreenDialog,
-          allowSnapshotting: allowSnapshotting,
-          transitionsBuilder: (context, animation, secondaryAnimation, child) =>
-              _slideTransitionBuilder(
-            slideDirection,
-            animation,
-            curve,
-            child,
-          ),
-        ),
+            settings: settings,
+            pageBuilder: (context, animation, secondaryAnimation) => page,
+            transitionDuration: transitionDuration,
+            reverseTransitionDuration: reverseTransitionDuration,
+            opaque: opaque,
+            barrierDismissible: barrierDismissible,
+            barrierColor: barrierColor,
+            barrierLabel: barrierLabel,
+            maintainState: maintainState,
+            fullscreenDialog: fullscreenDialog,
+            allowSnapshotting: allowSnapshotting,
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) {
+              return GoTransitions.slide(
+                      curve: curve, slideDirection: slideDirection)
+                  .builder(animation, child);
+            }),
       );
     } catch (e) {
       _handleNavigationError(e);
@@ -68,25 +66,23 @@ class GoSlide {
     try {
       return Go.navigatorKey.currentState!.pushReplacement<T, TO>(
         PageRouteBuilder(
-          settings: settings,
-          pageBuilder: (context, animation, secondaryAnimation) => page,
-          transitionDuration: transitionDuration,
-          reverseTransitionDuration: reverseTransitionDuration,
-          opaque: opaque,
-          barrierDismissible: barrierDismissible,
-          barrierColor: barrierColor,
-          barrierLabel: barrierLabel,
-          maintainState: maintainState,
-          fullscreenDialog: fullscreenDialog,
-          allowSnapshotting: allowSnapshotting,
-          transitionsBuilder: (context, animation, secondaryAnimation, child) =>
-              _slideTransitionBuilder(
-            slideDirection,
-            animation,
-            curve,
-            child,
-          ),
-        ),
+            settings: settings,
+            pageBuilder: (context, animation, secondaryAnimation) => page,
+            transitionDuration: transitionDuration,
+            reverseTransitionDuration: reverseTransitionDuration,
+            opaque: opaque,
+            barrierDismissible: barrierDismissible,
+            barrierColor: barrierColor,
+            barrierLabel: barrierLabel,
+            maintainState: maintainState,
+            fullscreenDialog: fullscreenDialog,
+            allowSnapshotting: allowSnapshotting,
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) {
+              return GoTransitions.slide(
+                      curve: curve, slideDirection: slideDirection)
+                  .builder(animation, child);
+            }),
       );
     } catch (e) {
       _handleNavigationError(e);
@@ -118,25 +114,23 @@ class GoSlide {
     try {
       return Go.navigatorKey.currentState!.pushAndRemoveUntil<T>(
         PageRouteBuilder(
-          settings: settings,
-          pageBuilder: (context, animation, secondaryAnimation) => page,
-          transitionDuration: transitionDuration,
-          reverseTransitionDuration: reverseTransitionDuration,
-          opaque: opaque,
-          barrierDismissible: barrierDismissible,
-          barrierColor: barrierColor,
-          barrierLabel: barrierLabel,
-          maintainState: maintainState,
-          fullscreenDialog: fullscreenDialog,
-          allowSnapshotting: allowSnapshotting,
-          transitionsBuilder: (context, animation, secondaryAnimation, child) =>
-              _slideTransitionBuilder(
-            slideDirection,
-            animation,
-            curve,
-            child,
-          ),
-        ),
+            settings: settings,
+            pageBuilder: (context, animation, secondaryAnimation) => page,
+            transitionDuration: transitionDuration,
+            reverseTransitionDuration: reverseTransitionDuration,
+            opaque: opaque,
+            barrierDismissible: barrierDismissible,
+            barrierColor: barrierColor,
+            barrierLabel: barrierLabel,
+            maintainState: maintainState,
+            fullscreenDialog: fullscreenDialog,
+            allowSnapshotting: allowSnapshotting,
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) {
+              return GoTransitions.slide(
+                      curve: curve, slideDirection: slideDirection)
+                  .builder(animation, child);
+            }),
         predicate,
       );
     } catch (e) {
@@ -154,50 +148,6 @@ class GoSlide {
       to(page);
     } on Exception catch (e) {
       _handleNavigationError(e);
-    }
-  }
-
-  static Widget _slideTransitionBuilder(
-    AxisDirection slideDirection,
-    Animation<double> animation,
-    Curve curve,
-    Widget child,
-  ) {
-    Tween<Offset> tween = _getTween(slideDirection);
-
-    CurvedAnimation curvedAnimation = CurvedAnimation(
-      parent: animation,
-      curve: curve,
-    );
-
-    return SlideTransition(
-      position: tween.animate(curvedAnimation),
-      child: child,
-    );
-  }
-
-  static Tween<Offset> _getTween(AxisDirection axisDirection) {
-    switch (axisDirection) {
-      case AxisDirection.left:
-        return Tween<Offset>(
-          begin: const Offset(-1, 0),
-          end: const Offset(0, 0),
-        );
-      case AxisDirection.right:
-        return Tween<Offset>(
-          begin: const Offset(1, 0),
-          end: const Offset(0, 0),
-        );
-      case AxisDirection.up:
-        return Tween<Offset>(
-          begin: const Offset(0, -1),
-          end: const Offset(0, 0),
-        );
-      case AxisDirection.down:
-        return Tween<Offset>(
-          begin: const Offset(0, 1),
-          end: const Offset(0, 0),
-        );
     }
   }
 }

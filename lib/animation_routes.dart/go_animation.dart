@@ -1,25 +1,8 @@
-// ignore_for_file: unused_local_variable
-
 part of 'package:short_navigation/short_navigation.dart';
 
-enum SizeDirection {
-  center,
-  top,
-  bottom,
-  right,
-  left,
-}
-
-abstract class GoSize {
+abstract class GoAnimation {
   ///This is simple navigation all you have to do
-  ///just pass your [widget] to go.
-  ///
-  ///If you use [sizeDirection] with [sizeAxis]
-  ///and there is a conflict between them,
-  ///the priority will be for [sizeAxis]
-  ///for example: if you passed [Axis.vertical] and [SizeDirection.left]
-  ///the [SizeDirection.left] will be ignored
-  ///and the route will start from center and increase vertically
+  ///just pass your [widget] to go
   static Future<T?> to<T extends Object?>(
     Widget page, {
     RouteSettings? settings,
@@ -32,9 +15,9 @@ abstract class GoSize {
     bool maintainState = true,
     bool fullscreenDialog = false,
     bool allowSnapshotting = true,
-    SizeDirection sizeDirection = SizeDirection.center,
-    Axis sizeAxis = Axis.vertical,
     Curve curve = Curves.linear,
+    Alignment alignment = Alignment.center,
+    List<GoTransitions> transitions = const [],
   }) async {
     try {
       return Go.navigatorKey.currentState!.push<T>(
@@ -50,13 +33,12 @@ abstract class GoSize {
             maintainState: maintainState,
             fullscreenDialog: fullscreenDialog,
             allowSnapshotting: allowSnapshotting,
-            transitionsBuilder:
-                (context, animation, secondaryAnimation, child) {
-              return GoTransitions.size(
-                      sizeDirection: sizeDirection,
-                      sizeAxis: sizeAxis,
-                      curve: curve)
-                  .builder(animation, child);
+            transitionsBuilder: (_, animation, secondaryAnimation, child) {
+              for (var anim in transitions) {
+                child = anim.builder(animation, child);
+              }
+
+              return child;
             }),
       );
     } catch (e) {
@@ -67,14 +49,7 @@ abstract class GoSize {
 
   ///This is simple navigation all you have to do
   ///just pass your [widget] to go and it will
-  ///remove previous route from the tree.
-  ///
-  ///If you use [sizeDirection] with [sizeAxis]
-  ///and there is a conflict between them,
-  ///the priority will be for [sizeAxis]
-  ///for example: if you passed [Axis.vertical] and [SizeDirection.left]
-  ///the [SizeDirection.left] will be ignored
-  ///and the route will start from center and increase vertically
+  ///remove previous route from the tree
   static Future<T?> toReplace<T extends Object?, TO extends Object?>(
     Widget page, {
     RouteSettings? settings,
@@ -87,9 +62,9 @@ abstract class GoSize {
     bool maintainState = true,
     bool fullscreenDialog = false,
     bool allowSnapshotting = true,
-    SizeDirection sizeDirection = SizeDirection.center,
-    Axis sizeAxis = Axis.vertical,
     Curve curve = Curves.linear,
+    Alignment alignment = Alignment.center,
+    List<GoTransitions> transitions = const [],
   }) async {
     try {
       return Go.navigatorKey.currentState!.pushReplacement<T, TO>(
@@ -105,13 +80,12 @@ abstract class GoSize {
             maintainState: maintainState,
             fullscreenDialog: fullscreenDialog,
             allowSnapshotting: allowSnapshotting,
-            transitionsBuilder:
-                (context, animation, secondaryAnimation, child) {
-              return GoTransitions.size(
-                      sizeDirection: sizeDirection,
-                      sizeAxis: sizeAxis,
-                      curve: curve)
-                  .builder(animation, child);
+            transitionsBuilder: (_, animation, secondaryAnimation, child) {
+              for (var anim in transitions) {
+                child = anim.builder(animation, child);
+              }
+
+              return child;
             }),
       );
     } catch (e) {
@@ -122,15 +96,7 @@ abstract class GoSize {
 
   ///This is simple navigation all you have to do
   ///just pass your [widget] to go and it will
-  ///remove all routes from the tree.
-  ///
-  ///
-  ///If you use [sizeDirection] with [sizeAxis]
-  ///and there is a conflict between them,
-  ///the priority will be for [sizeAxis]
-  ///for example: if you passed [Axis.vertical] and [SizeDirection.left]
-  ///the [SizeDirection.left] will be ignored
-  ///and the route will start from center and increase vertically
+  ///remove all routes from the tree
   static Future<T?> toRemoveUntil<T extends Object?>(
     Widget page, {
     RouteSettings? settings,
@@ -143,9 +109,9 @@ abstract class GoSize {
     bool maintainState = true,
     bool fullscreenDialog = false,
     bool allowSnapshotting = true,
-    SizeDirection sizeDirection = SizeDirection.center,
-    Axis sizeAxis = Axis.vertical,
     Curve curve = Curves.linear,
+    Alignment alignment = Alignment.center,
+    List<GoTransitions> transitions = const [],
     bool Function(Route<dynamic> route)? predicate,
   }) async {
     predicate ??= (route) => false;
@@ -164,13 +130,12 @@ abstract class GoSize {
             maintainState: maintainState,
             fullscreenDialog: fullscreenDialog,
             allowSnapshotting: allowSnapshotting,
-            transitionsBuilder:
-                (context, animation, secondaryAnimation, child) {
-              return GoTransitions.size(
-                      sizeDirection: sizeDirection,
-                      sizeAxis: sizeAxis,
-                      curve: curve)
-                  .builder(animation, child);
+            transitionsBuilder: (_, animation, secondaryAnimation, child) {
+              for (var anim in transitions) {
+                child = anim.builder(animation, child);
+              }
+
+              return child;
             }),
         predicate,
       );

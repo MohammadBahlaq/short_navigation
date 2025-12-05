@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 part 'animation_routes.dart/fade_transition.dart';
+part 'animation_routes.dart/go_animation.dart';
 part 'animation_routes.dart/rotaion_transition.dart';
 part 'animation_routes.dart/scale_transition.dart';
 part 'animation_routes.dart/size_transition.dart';
@@ -9,6 +10,7 @@ part 'basic_routes/bottom_sheet_route.dart';
 part 'basic_routes/dialog_route.dart';
 part 'basic_routes/page_route_builder.dart';
 part 'basic_routes/raw_dialog_route.dart';
+part 'helper/go_transition.dart';
 part 'messenger.dart';
 part 'of.dart';
 
@@ -253,11 +255,6 @@ void _handleNavigationError(Object e) {
       "${'\x1B[31m'}[short_navigation]: Please make sure that you passed Go.navigatorKey to navigatorKey in MaterialApp like this `navigatorKey: Go.navigatorKey`",
     );
   } else {
-    GoMessenger.dialog(AlertDialog(
-      alignment: Alignment.center,
-      content: Text(e.toString()),
-    ));
-
     debugPrint(
       "${'\x1B[31m'}[short_navigation]: ${e.toString()}",
     );

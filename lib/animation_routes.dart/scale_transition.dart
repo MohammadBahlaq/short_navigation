@@ -1,6 +1,6 @@
 part of 'package:short_navigation/short_navigation.dart';
 
-class GoScale {
+abstract class GoScale {
   ///This is simple navigation all you have to do
   ///just pass your [widget] to go
   static Future<T?> to<T extends Object?>(
@@ -33,12 +33,8 @@ class GoScale {
           fullscreenDialog: fullscreenDialog,
           allowSnapshotting: allowSnapshotting,
           transitionsBuilder: (context, animation, secondaryAnimation, child) =>
-              _scaleTransitionBuilder(
-            animation,
-            alignment,
-            curve,
-            child,
-          ),
+              GoTransitions.scale(alignment: alignment, curve: curve)
+                  .builder(animation, child),
         ),
       );
     } catch (e) {
@@ -80,12 +76,8 @@ class GoScale {
           fullscreenDialog: fullscreenDialog,
           allowSnapshotting: allowSnapshotting,
           transitionsBuilder: (context, animation, secondaryAnimation, child) =>
-              _scaleTransitionBuilder(
-            animation,
-            alignment,
-            curve,
-            child,
-          ),
+              GoTransitions.scale(alignment: alignment, curve: curve)
+                  .builder(animation, child),
         ),
       );
     } catch (e) {
@@ -130,12 +122,8 @@ class GoScale {
           fullscreenDialog: fullscreenDialog,
           allowSnapshotting: allowSnapshotting,
           transitionsBuilder: (context, animation, secondaryAnimation, child) =>
-              _scaleTransitionBuilder(
-            animation,
-            alignment,
-            curve,
-            child,
-          ),
+              GoTransitions.scale(alignment: alignment, curve: curve)
+                  .builder(animation, child),
         ),
         predicate,
       );
@@ -155,28 +143,5 @@ class GoScale {
     } catch (e) {
       _handleNavigationError(e);
     }
-  }
-
-  static Widget _scaleTransitionBuilder(
-    Animation<double> animation,
-    Alignment alignment,
-    Curve curve,
-    Widget child,
-  ) {
-    Tween<double> tween = Tween(
-      begin: 0,
-      end: 1,
-    );
-
-    CurvedAnimation curvedAnimation = CurvedAnimation(
-      parent: animation,
-      curve: curve,
-    );
-
-    return ScaleTransition(
-      scale: tween.animate(curvedAnimation),
-      alignment: alignment,
-      child: child,
-    );
   }
 }
