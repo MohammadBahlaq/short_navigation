@@ -59,14 +59,15 @@ Explaining of how to use this package
 ```
 
 ## You can check these GIF examples from the Example section
-<img src="https://github.com/user-attachments/assets/1a334193-27c9-4a88-a72c-a2369c0d8945" width="200" height="350" />
-<img src="https://github.com/user-attachments/assets/8254ae11-cf51-4dbe-951d-4cad6adffc79" width="200" height="350" />
-<img src="https://github.com/user-attachments/assets/cfceae55-49c1-49e7-a127-6e56b716f033" width="200" height="350" />
-<img src="https://github.com/user-attachments/assets/c2381a5d-7c29-42be-8fc4-edeebbd51700" width="200" height="350" />
-<img src="https://github.com/user-attachments/assets/b41082f4-8687-4677-8177-f5fd836d4296" width="200" height="350" />
-<img src="https://github.com/user-attachments/assets/a6acb68f-d956-47bc-b5fd-f623e0e1c6fa" width="200" height="350" />
-<img src="https://github.com/user-attachments/assets/47a44c0e-195d-42e7-a33a-c07cdd1d1009" width="200" height="350" />
-<img src="https://github.com/user-attachments/assets/e6acd407-34c8-4beb-8289-7080e3d2a876" width="200" height="350" />
+<img src="https://github.com/user-attachments/assets/c602eac9-9c30-4de8-8e32-51dfe9b86af9" width="200" height="350" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="https://github.com/user-attachments/assets/97c7b565-2e38-42f9-ba77-fbb3429c02bc" width="200" height="350" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="https://github.com/user-attachments/assets/594d364d-db04-437c-bf14-5c4fdee84c8e" width="200" height="350" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br />
+<br />
+<img src="https://github.com/user-attachments/assets/e87d4b6f-ba15-48c2-8ca5-285d3c7996c7" width="200" height="350" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="https://github.com/user-attachments/assets/1bf20687-b418-48ab-9cd2-e3d64f05d69f" width="200" height="350" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="https://github.com/user-attachments/assets/37b0d441-62de-4867-a694-e585b72d5818" width="200" height="350" />
+
 
 ## Navigation with animations [Slide, Scale, Rotation, Size, Fade]
 ```dart
