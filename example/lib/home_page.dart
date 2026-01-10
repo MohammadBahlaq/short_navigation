@@ -54,8 +54,8 @@ class HomeScreen extends StatelessWidget {
     GoAnimation.to(
       ProfileScreen(),
       transitions: [
-        .fade(), //Or GoTransitions.fade() if you use last version of Dart
-        .slide(),
+        GoTransitions.fade(), //Or .fade() if you use last version of Dart
+        GoTransitions.slide(),
       ],
       transitionDuration: Duration(seconds: 1),
     );
