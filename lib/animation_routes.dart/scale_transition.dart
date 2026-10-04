@@ -19,7 +19,7 @@ abstract class GoScale {
     Alignment alignment = Alignment.center,
   }) async {
     try {
-      return Go.navigatorKey.currentState!.push<T>(
+      return await Go.navigatorKey.currentState!.push<T>(
         PageRouteBuilder(
           settings: settings,
           pageBuilder: (context, animation, secondaryAnimation) => page,
@@ -62,7 +62,7 @@ abstract class GoScale {
     Alignment alignment = Alignment.center,
   }) async {
     try {
-      return Go.navigatorKey.currentState!.pushReplacement<T, TO>(
+      return await Go.navigatorKey.currentState!.pushReplacement<T, TO>(
         PageRouteBuilder(
           settings: settings,
           pageBuilder: (context, animation, secondaryAnimation) => page,
@@ -108,7 +108,7 @@ abstract class GoScale {
     predicate ??= (route) => false;
 
     try {
-      return Go.navigatorKey.currentState!.pushAndRemoveUntil<T>(
+      return await Go.navigatorKey.currentState!.pushAndRemoveUntil<T>(
         PageRouteBuilder(
           settings: settings,
           pageBuilder: (context, animation, secondaryAnimation) => page,
@@ -139,7 +139,7 @@ abstract class GoScale {
   static Future<void> backAndTo(Widget page) async {
     try {
       Go.back();
-      to(page);
+      await to(page);
     } catch (e) {
       _handleNavigationError(e);
     }

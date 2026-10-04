@@ -17,7 +17,7 @@ abstract class GoRawDialogRoute {
         transitionBuilder,
   }) async {
     try {
-      return Go.navigatorKey.currentState!.push<T>(
+      return await Go.navigatorKey.currentState!.push<T>(
         RawDialogRoute(
           pageBuilder: (context, animation, secondaryAnimation) => page,
           barrierDismissible: barrierDismissible,
@@ -53,7 +53,7 @@ abstract class GoRawDialogRoute {
         transitionBuilder,
   }) async {
     try {
-      return Go.navigatorKey.currentState!.pushReplacement<T, TO>(
+      return await Go.navigatorKey.currentState!.pushReplacement<T, TO>(
         RawDialogRoute(
           pageBuilder: (context, animation, secondaryAnimation) => page,
           barrierDismissible: barrierDismissible,
@@ -92,7 +92,7 @@ abstract class GoRawDialogRoute {
     predicate ??= (route) => false;
 
     try {
-      return Go.navigatorKey.currentState!.pushAndRemoveUntil<T>(
+      return await Go.navigatorKey.currentState!.pushAndRemoveUntil<T>(
         RawDialogRoute(
           pageBuilder: (context, animation, secondaryAnimation) => page,
           barrierDismissible: barrierDismissible,
@@ -118,7 +118,7 @@ abstract class GoRawDialogRoute {
   static Future<void> backAndTo(Widget page) async {
     try {
       Go.back();
-      to(page);
+      await to(page);
     } catch (e) {
       _handleNavigationError(e);
     }

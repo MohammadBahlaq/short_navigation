@@ -35,7 +35,7 @@ abstract class Go {
     RouteSettings? settings,
   }) async {
     try {
-      return navigatorKey.currentState!.push<T>(
+      return await navigatorKey.currentState!.push<T>(
         MaterialPageRoute(
           builder: (context) => page,
           allowSnapshotting: allowSnapshotting,
@@ -63,7 +63,7 @@ abstract class Go {
     RouteSettings? settings,
   }) async {
     try {
-      return navigatorKey.currentState!.pushReplacement<T, TO>(
+      return await navigatorKey.currentState!.pushReplacement<T, TO>(
         MaterialPageRoute(
           builder: (context) => page,
           allowSnapshotting: allowSnapshotting,
@@ -95,7 +95,7 @@ abstract class Go {
     predicate ??= (route) => false;
 
     try {
-      return navigatorKey.currentState!.pushAndRemoveUntil<T>(
+      return await navigatorKey.currentState!.pushAndRemoveUntil<T>(
         MaterialPageRoute(
           builder: (context) => page,
           allowSnapshotting: allowSnapshotting,
@@ -118,7 +118,7 @@ abstract class Go {
   static Future<void> backAndTo(Widget page) async {
     try {
       back();
-      to(page);
+      await to(page);
     } catch (e) {
       _handleNavigationError(e);
     }
@@ -129,7 +129,7 @@ abstract class Go {
   static Future<T?> toName<T extends Object?>(String page,
       {Object? arguments}) async {
     try {
-      return navigatorKey.currentState!.pushNamed<T>(
+      return await navigatorKey.currentState!.pushNamed<T>(
         page,
         arguments: arguments,
       );
@@ -146,7 +146,7 @@ abstract class Go {
       String page,
       {Object? arguments}) async {
     try {
-      return navigatorKey.currentState!.pushReplacementNamed<T, TO>(
+      return await navigatorKey.currentState!.pushReplacementNamed<T, TO>(
         page,
         arguments: arguments,
       );
@@ -167,7 +167,7 @@ abstract class Go {
     predicate ??= (route) => false;
 
     try {
-      return navigatorKey.currentState!.pushNamedAndRemoveUntil<T>(
+      return await navigatorKey.currentState!.pushNamedAndRemoveUntil<T>(
         page,
         predicate,
         arguments: arguments,
@@ -186,7 +186,7 @@ abstract class Go {
       {Object? arguments,
       TO? result}) async {
     try {
-      return navigatorKey.currentState!.popAndPushNamed<T, TO>(
+      return await navigatorKey.currentState!.popAndPushNamed<T, TO>(
         page,
         arguments: arguments,
         result: result,

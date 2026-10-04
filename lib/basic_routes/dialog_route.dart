@@ -15,7 +15,7 @@ abstract class GoDialogRoute {
     TraversalEdgeBehavior? traversalEdgeBehavior,
   }) async {
     try {
-      return Go.navigatorKey.currentState!.push<T>(
+      return await Go.navigatorKey.currentState!.push<T>(
         DialogRoute(
           context: Go.context,
           builder: (context) => page,
@@ -50,7 +50,7 @@ abstract class GoDialogRoute {
     TraversalEdgeBehavior? traversalEdgeBehavior,
   }) async {
     try {
-      return Go.navigatorKey.currentState!.pushReplacement<T, TO>(
+      return await Go.navigatorKey.currentState!.pushReplacement<T, TO>(
         DialogRoute(
           context: Go.context,
           builder: (context) => page,
@@ -88,7 +88,7 @@ abstract class GoDialogRoute {
     predicate ??= (route) => false;
 
     try {
-      return Go.navigatorKey.currentState!.pushAndRemoveUntil<T>(
+      return await Go.navigatorKey.currentState!.pushAndRemoveUntil<T>(
         DialogRoute(
           context: Go.context,
           builder: (context) => page,
@@ -115,7 +115,7 @@ abstract class GoDialogRoute {
   static Future<void> backAndTo(Widget page) async {
     try {
       Go.back();
-      to(page);
+      await to(page);
     } catch (e) {
       _handleNavigationError(e);
     }
