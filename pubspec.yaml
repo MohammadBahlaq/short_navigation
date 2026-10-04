@@ -1,6 +1,6 @@
 name: short_navigation
 description: A lightweight Flutter navigation package that allows navigating between routes without requiring BuildContext.
-version: 2.5.4
+version: 2.5.5
 homepage: https://github.com/MohammadBahlaq/short_navigation.git
 
 environment:
