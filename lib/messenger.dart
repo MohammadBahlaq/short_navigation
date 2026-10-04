@@ -16,7 +16,7 @@ abstract class GoMessenger {
     TraversalEdgeBehavior? traversalEdgeBehavior,
   }) async {
     try {
-      return showAdaptiveDialog<T>(
+      return await showAdaptiveDialog<T>(
         context: Go.context,
         builder: (context) => content,
         barrierDismissible: barrierDismissible,
@@ -59,7 +59,7 @@ abstract class GoMessenger {
     AnimationStyle? sheetAnimationStyle,
   }) async {
     try {
-      return showModalBottomSheet<T>(
+      return await showModalBottomSheet<T>(
         context: Go.context,
         builder: (context) => content,
         backgroundColor: backgroundColor,
